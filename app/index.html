@@ -11,13 +11,16 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="css/app.css" />
 </head>
-<body>
+<body ng-cloak>
     <div class="container" ng-controller="AppController">
         <div class="row">
             <img ng-src="{{ui.logo.url}}" alt="{{ui.logo.title}}" />
         </div>
         <div class="row center">
-            <img ng-src="{{ui.pics.url}}" alt="{{ui.pics.title}}" class="img-responsive" />
+            <div ng-repeat="pic in ui.pics">
+                <img ng-src="{{pic.url}}" alt="{{pic.title}}" class="img-responsive" ng-click="alert('test')" />
+            </div>
+            <a href="#" ng-click="prevPic()">prev</a> 1 of {{ui.pics.length}} <a href="#" ng-click="nextPic()">next</a>
         </div>
         <div class="row">
             <h4>Which one fixes this?</h4>
