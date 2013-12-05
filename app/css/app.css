@@ -2,6 +2,7 @@ body {
     background: #020000 url('../img/background.jpg') 50% 0 no-repeat;
     color: #ffffff;
     font-size: 14px;
+    font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
 }
 
 .container {
@@ -9,7 +10,8 @@ body {
 }
 
 .nopad {
-    padding-left: 0;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .main {
@@ -41,7 +43,7 @@ body {
     }
 
 .view {
-    padding: 30px 0 0 0;
+    padding: 30px 20px 0 20px;
 }
 
     .view .header {
@@ -52,7 +54,9 @@ body {
     .view .pic {
         position: relative;
         z-index: 1;
-        margin-top: -18px;
+        margin: -18px auto 0;
+        max-width: 600px;
+        border: 1px solid #000000;
     }
 
 .vote {
@@ -69,7 +73,7 @@ body {
     .vote .icon {
         background: #000000 url('../img/icon-background.png') 0 0 repeat;
         background-size: 100% 100%;
-        padding: 20px 0 10px;
+        padding: 20px 0;
         cursor: pointer;
     }
 
@@ -82,6 +86,27 @@ body {
         .vote .icon img {
             margin-bottom: 10px;
         }
+
+.comment {
+    padding: 20px 5px;
+    text-align: left;
+    color: #000000;
+}
+
+    .comment textarea {
+        width: 75%;
+        margin: 5px 0;
+    }
+
+    .comment .upload {
+        font-size: 11px;
+    }
+
+    .comment .upload a {
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #22b6e4;
+    }
 
 .row {
 }
