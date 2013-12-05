@@ -1,5 +1,5 @@
 body {
-    background: #666666;
+    background: #020000 url('../img/background.jpg') 50% 0 no-repeat;
     color: #ffffff;
     font-size: 14px;
 }
@@ -11,15 +11,50 @@ h4 {
 }
 
 .container {
-    background: #210816;
+    max-width: 960px;
 }
 
+.main {
+    background: #ffffff;
+}
+
+.view {
+    padding: 30px;
+}
+
+    .view .header {
+        position: relative;
+        z-index: 2;
+    }
+
+    .view .pic {
+        position: relative;
+        z-index: 1;
+        margin-top: -18px;
+    }
+
+.vote {
+    padding: 30px;
+}
+
+    .vote .icon {
+        border: 2px solid #22b6e4;
+        background: #000000 url('../img/icon-background.jpg') 0 0 repeat;
+        padding: 20px 0 10px;
+    }
+
+        .vote .icon a {
+        }
+
+        .vote .icon img {
+            margin-bottom: 10px;
+        }
+
 .row {
-    
 }
 
 .center {
-    text-align: center;    
+    text-align: center;
 }
 
 .icon {

@@ -12,7 +12,7 @@ cmtApp.controller('AppController',
         init();
 
         function init() {
-            alert('start');
+            //alert('start');
             //picService.getPicsPaged(1234, 1, 1).then(function (data) {
                 //$scope.feedbackItems = data;
             //});
@@ -39,14 +39,22 @@ cmtApp.controller('AppController',
         };
 
         $scope.ui = {
-            logo: {
-                title: 'Party Down South',
-                url: 'img/logo-pds.png'
+            header: {
+                logo: {
+                    title: 'Party Down South',
+                    url: 'img/header.png'               
+                }            
+            },
+            main: {
+                header: {
+                    title: 'Jesus, Duct Tape or Whiskey',
+                    url: 'img/main-header.png'
+                }
             },
             pics: [
                 {
                     title: 'Redneck 1',
-                    url: 'img/jdw-0001.jpg'
+                    url: 'data/jdw-0001.jpg'
                 }
             ],
             icons: {

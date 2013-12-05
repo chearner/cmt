@@ -6,37 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:site_name" content="CMT: Country Music Television">
+    <meta property="og:title" content="CMT">
+    <meta property="og:description" content="Visit CMT.com">
+    <meta property="og:app_id" content="">
+    <meta property="fb:admins" content="">
     <title>Party Down South - Jesus, Ducktape or Whiskey?</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="css/app.css" />
 </head>
 <body ng-cloak>
     <div class="container" ng-controller="AppController">
-        <div class="row">
-            <img ng-src="{{ui.logo.url}}" alt="{{ui.logo.title}}" />
+        <div class="row header">
+            <img ng-src="{{ui.header.logo.url}}" alt="{{ui.header.logo.title}}" />
+            <a href="">Like</a><a href="">Share</a>
         </div>
-        <div class="row center">
-            <div ng-repeat="pic in ui.pics">
-                <img ng-src="{{pic.url}}" alt="{{pic.title}}" class="img-responsive" ng-click="alert('test')" />
+        <div class="row main">
+            <div class="col-lg-6 center view">
+                <div class="row">
+                    <img ng-src="{{ui.main.header.url}}" alt="{{ui.main.header.title}}" class="header" />
+                    <div ng-repeat="pic in ui.pics" class="pic">
+                        <img ng-src="{{pic.url}}" alt="{{pic.title}}" class="img-responsive" ng-click="alert('test')" />
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="#" ng-click="prevPic()">prev</a> 1 of {{ui.pics.length}} <a href="#" ng-click="nextPic()">next</a>
+                </div>
             </div>
-            <a href="#" ng-click="prevPic()">prev</a> 1 of {{ui.pics.length}} <a href="#" ng-click="nextPic()">next</a>
-        </div>
-        <div class="row">
-            <h4>Which one fixes this?</h4>
-        </div>
-        <div class="row">
-            <div class="col-xs-4 center icon">
-                <a href="#">
-                    <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.title}}" class="img-responsive" /></a>
-            </div>
-            <div class="col-xs-4 center icon">
-                <a href="#">
-                    <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.title}}" class="img-responsive" /></a>
-            </div>
-            <div class="col-xs-4 center icon">
-                <a href="#">
-                    <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.title}}" class="img-responsive" /></a>
+            <div class="col-lg-6 center vote">
+                <div class="row">
+                    <h4>Vote for how you'd fix this?</h4>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 center icon">
+                        <a href="#">
+                            <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.title}}" class="img-responsive" />
+                            Jesus
+                        </a>
+                    </div>
+                    <div class="col-xs-4 center icon">
+                        <a href="#">
+                            <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.title}}" class="img-responsive" />
+                            Duct Tape
+                        </a>
+                    </div>
+                    <div class="col-xs-4 center icon">
+                        <a href="#">
+                            <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.title}}" class="img-responsive" />
+                            Whiskey
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
