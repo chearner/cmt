@@ -4,22 +4,44 @@ body {
     font-size: 14px;
 }
 
-h4 {
-    text-size: 18px;
-    color: #ffffff;
-    padding: 10px 25px;
-}
-
 .container {
     max-width: 960px;
+}
+
+.nopad {
+    padding-left: 0;
 }
 
 .main {
     background: #ffffff;
 }
 
+.blue {
+    border: 2px solid #22b6e4;
+}
+
+    .blue a {
+        color: #22b6e4;
+    }
+
+.red {
+    border: 2px solid #e6203c;
+}
+
+    .red a {
+        color: #e6203c;
+    }
+
+.yellow {
+    border: 2px solid #efb81d;
+}
+
+    .yellow a {
+        color: #efb81d;
+    }
+
 .view {
-    padding: 30px;
+    padding: 30px 0 0 0;
 }
 
     .view .header {
@@ -34,16 +56,27 @@ h4 {
     }
 
 .vote {
-    padding: 30px;
+    padding: 30px 0 0 0;
 }
 
+    .vote h4 {
+        background: #000000;
+        text-size: 18px;
+        color: #ffffff;
+        padding: 10px 25px;
+    }
+
     .vote .icon {
-        border: 2px solid #22b6e4;
-        background: #000000 url('../img/icon-background.jpg') 0 0 repeat;
+        background: #000000 url('../img/icon-background.png') 0 0 repeat;
+        background-size: 100% 100%;
         padding: 20px 0 10px;
+        cursor: pointer;
     }
 
         .vote .icon a {
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
         }
 
         .vote .icon img {

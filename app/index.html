@@ -22,39 +22,41 @@
             <a href="">Like</a><a href="">Share</a>
         </div>
         <div class="row main">
-            <div class="col-lg-6 center view">
-                <div class="row">
+            <div class="col-lg-6 center">
+                <div class="row view">
                     <img ng-src="{{ui.main.header.url}}" alt="{{ui.main.header.title}}" class="header" />
                     <div ng-repeat="pic in ui.pics" class="pic">
                         <img ng-src="{{pic.url}}" alt="{{pic.title}}" class="img-responsive" ng-click="alert('test')" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row view">
                     <a href="#" ng-click="prevPic()">prev</a> 1 of {{ui.pics.length}} <a href="#" ng-click="nextPic()">next</a>
                 </div>
             </div>
-            <div class="col-lg-6 center vote">
-                <div class="row">
-                    <h4>Vote for how you'd fix this?</h4>
+            <div class="col-lg-6 center">
+                <div class="row vote">
+                    <div class="col-xs-12 nopad">
+                        <h4>Vote for how you'd fix this?</h4>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-4 center icon">
-                        <a href="#">
+                <div class="row vote">
+                    <div class="col-xs-4 nopad">
+                        <div class="center icon blue" ng-click="iconClick()">
                             <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.title}}" class="img-responsive" />
-                            Jesus
-                        </a>
+                            Jesus                            
+                        </div>
                     </div>
-                    <div class="col-xs-4 center icon">
-                        <a href="#">
+                    <div class="col-xs-4 nopad">
+                        <div class="center icon red" ng-click="iconClick()">
                             <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.title}}" class="img-responsive" />
-                            Duct Tape
-                        </a>
+                            Duct Tape                        
+                        </div>
                     </div>
-                    <div class="col-xs-4 center icon">
-                        <a href="#">
+                    <div class="col-xs-4 nopad">
+                        <div class="center icon yellow" ng-click="iconClick()">
                             <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.title}}" class="img-responsive" />
-                            Whiskey
-                        </a>
+                            Whiskey                            
+                        </div>
                     </div>
                 </div>
             </div>

@@ -30,6 +30,10 @@ cmtApp.controller('AppController',
             }
         });
 
+        $scope.iconClick = function () {
+            alert('click');
+        };
+
         $scope.prevPic = function () {
             $scope.picCount--;
         };
