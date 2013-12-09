@@ -30,8 +30,8 @@ cmtApp.controller('AppController',
             }
         });
 
-        $scope.iconClick = function () {
-            alert('click');
+        $scope.voteFor = function (vote) {
+            alert(vote);
         };
 
         $scope.prevPic = function () {
@@ -45,33 +45,33 @@ cmtApp.controller('AppController',
         $scope.ui = {
             header: {
                 logo: {
-                    title: 'Party Down South',
+                    alt: 'Party Down South',
                     url: 'img/header.png'               
                 }            
             },
             main: {
-                header: {
-                    title: 'Jesus, Duct Tape or Whiskey',
-                    url: 'img/main-header.png'
+                title: {
+                    alt: 'Jesus, Duct Tape or Whiskey',
+                    url: 'img/main-title.png'
                 }
             },
             pics: [
                 {
-                    title: 'Redneck 1',
-                    url: 'data/jdw-0001.jpg'
+                    alt: 'Redneck 1',
+                    url: 'data/pds-0001.jpg'
                 }
             ],
             icons: {
                 jesus: {
-                    title: 'Jesus',
+                    alt: 'Jesus',
                     url: 'img/icon-jesus.png',
                 },
                 tape: {
-                    title: 'Duct Tape',
+                    alt: 'Duct Tape',
                     url: 'img/icon-tape.png'
                 },
                 whiskey: {
-                    title: 'Whiskey',
+                    alt: 'Whiskey',
                     url: 'img/icon-whiskey.png'
                 }
             }

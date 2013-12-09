@@ -1,9 +1,33 @@
 body {
-    background: #020000 url('../img/background.jpg') 50% 0 no-repeat;
+    background: #020000 url('../img/back.jpg') 50% 0 no-repeat;
     color: #ffffff;
     font-size: 14px;
     font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
 }
+
+.animate-show, .animate-hide {
+    -webkit-transition: all linear 1s;
+    -moz-transition: all linear 1s;
+    -ms-transition: all linear 1s;
+    -o-transition: all linear 1s;
+    transition: all linear 1s;
+}
+
+.animate-show {
+    opacity: 0;
+}
+
+    .animate-show.animate-show-active {
+        opacity: 1;
+    }
+
+.animate-hide {
+    opacity: 1;
+}
+
+    .animate-hide.animate-hide-active {
+        opacity: 0;
+    }
 
 .container {
     max-width: 960px;
@@ -20,95 +44,118 @@ body {
 
 .blue {
     border: 2px solid #22b6e4;
+    color: #22b6e4;
 }
-
-    .blue a {
-        color: #22b6e4;
-    }
 
 .red {
     border: 2px solid #e6203c;
+    color: #e6203c;
 }
-
-    .red a {
-        color: #e6203c;
-    }
 
 .yellow {
     border: 2px solid #efb81d;
+    color: #efb81d;
 }
-
-    .yellow a {
-        color: #efb81d;
-    }
 
 .view {
-    padding: 30px 20px 0 20px;
 }
 
-    .view .header {
+    .view .slider {
+        padding: 30px 20px 0 20px;
         position: relative;
         z-index: 2;
     }
 
-    .view .pic {
-        position: relative;
-        z-index: 1;
-        margin: -18px auto 0;
-        max-width: 600px;
-        border: 1px solid #000000;
+        .view .slider .title {
+            position: relative;
+            z-index: 2;
+        }
+
+        .view .slider .pic {
+            position: relative;
+            z-index: 1;
+            margin: -18px auto 0;
+            max-width: 600px;
+            border: 1px solid #000000;
+        }
+
+    .view .controls {
+        padding: 10px 0 20px 0;
+        text-size: 16px;
+        color: #666666;
     }
+
+        .view .controls strong {
+            color: #000000;
+        }
+
+        .view .controls a {
+            color: #000000;
+            margin: 0 20px;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
 .vote {
-    padding: 30px 0 0 0;
+    /* */
 }
 
-    .vote h4 {
-        background: #000000;
-        text-size: 18px;
+    .vote .title {
+        margin: 75px 0 0 0;
+        background: #ffffff url('../img/vote-title.png') 0 0 no-repeat;
         color: #ffffff;
-        padding: 10px 25px;
+        height: 50px;
+        text-align: left;
     }
 
-    .vote .icon {
-        background: #000000 url('../img/icon-background.png') 0 0 repeat;
-        background-size: 100% 100%;
-        padding: 20px 0;
-        cursor: pointer;
+        .vote .title h4 {
+            text-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            padding: 3px 0 0 50px;
+        }
+
+    .vote .icons {
+        padding: 10px 0 0 0;
     }
 
-        .vote .icon a {
+        .vote .icons .icon {
+            background: #000000 url('../img/icon-back.png') 0 0 repeat;
+            background-size: 100% 100%;
+            padding: 15px 0;
+            cursor: pointer;
             text-transform: uppercase;
             font-weight: bold;
-            text-decoration: none;
         }
 
-        .vote .icon img {
-            margin-bottom: 10px;
+            .vote .icons .icon img {
+                margin-bottom: 10px;
+            }
+
+    .vote .comment {
+        padding: 20px 5px;
+        text-align: left;
+        color: #000000;
+    }
+
+        .vote .comment textarea {
+            width: 75%;
+            margin: 5px 0;
         }
 
-.comment {
-    padding: 20px 5px;
-    text-align: left;
-    color: #000000;
-}
+        .vote .comment .upload {
+            font-size: 11px;
+        }
 
-    .comment textarea {
-        width: 75%;
-        margin: 5px 0;
-    }
-
-    .comment .upload {
-        font-size: 11px;
-    }
-
-    .comment .upload a {
-        text-transform: uppercase;
-        text-decoration: underline;
-        color: #22b6e4;
-    }
+            .vote .comment .upload a {
+                text-transform: uppercase;
+                text-decoration: underline;
+                color: #3e59a5;
+            }
 
 .row {
+    /* */
 }
 
 .center {
@@ -127,13 +174,13 @@ body {
 /*////// FOOTER ///////*/
 
 .footer {
-    background: #000;
+    background: #000000;
     background: rgba(0, 0, 0, 0.63);
 }
 
-.footer > div {
-    overflow: hidden;
-}
+    .footer > div {
+        overflow: hidden;
+    }
 
 .footer-col-left img {
     border: 1px solid #000;
@@ -154,34 +201,35 @@ body {
     margin: 5px 0 0;
 }
 
-.footer-col-left li a {
-    display: block;
-}
+    .footer-col-left li a {
+        display: block;
+    }
 
-.footer-col-left li img {
-    vertical-align: top;
-    width: auto;
-}
+    .footer-col-left li img {
+        vertical-align: top;
+        width: auto;
+    }
 
-.footer-col-left li:first-child {
-    margin-right: 3%;
-    float: left;
-}
+    .footer-col-left li:first-child {
+        margin-right: 3%;
+        float: left;
+    }
 
 .footer-intro {
-    background: #000;
+    background: #000000;
     color: #808080;
     font-size: 16px;
-    padding: 10px 18px;
+    padding: 7px 15px;
+    margin-bottom: 25px;
 }
 
-.footer-intro i {
-    font-size: 20px;
-    color: #FFF;
-    padding: 0 10px 0;
-    font-style: normal;
-    font-weight: bold;
-}
+    .footer-intro i {
+        font-size: 20px;
+        color: #FFF;
+        padding: 0 10px 0;
+        font-style: normal;
+        font-weight: bold;
+    }
 
 .footer-col-right {
     float: left;
@@ -193,9 +241,9 @@ body {
     font-size: 12px;
 }
 
-.footer-col-right p:first-child {
-    font-weight: bold;
-}
+    .footer-col-right p:first-child {
+        font-weight: bold;
+    }
 
 .footer-col-left {
     float: left;
@@ -204,8 +252,7 @@ body {
 
 
 @media (min-width: 768px) {
-  .footer {
-    padding: 30px 10px;
-  }
+    .footer {
+        padding: 30px 10px;
+    }
 }
-

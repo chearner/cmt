@@ -1,5 +1,3 @@
 'use strict';
 
-var cmtApp = angular.module('cmtApp', [
-
-]);
+var cmtApp = angular.module('cmtApp', ['ngAnimate']);

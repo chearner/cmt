@@ -22,48 +22,50 @@
             <a href="">Like</a><a href="">Share</a>
         </div>
         <div class="row main">
-            <div class="col-lg-6 center">
-                <div class="row view">
-                    <img ng-src="{{ui.main.header.url}}" alt="{{ui.main.header.title}}" class="header" />
+            <div class="col-lg-6 center view">
+                <div class="row slider">
+                    <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
                     <div ng-repeat="pic in ui.pics" class="pic">
-                        <img ng-src="{{pic.url}}" alt="{{pic.title}}" class="img-responsive" ng-click="alert('test')" />
+                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" class="img-responsive" ng-click="alert('test')" />
                     </div>
                 </div>
-                <div class="row view">
-                    <a href="#" ng-click="prevPic()">prev</a> 1 of {{ui.pics.length}} <a href="#" ng-click="nextPic()">next</a>
+                <div class="row controls">
+                    <a href="#" ng-click="prevPic()">Back</a> <strong>1</strong> of {{ui.pics.length}} <a href="#" ng-click="nextPic()">Next</a>
                 </div>
             </div>
-            <div class="col-lg-6 center">
-                <div class="row vote">
+            <div class="col-lg-6 vote">
+                <div class="row title">
                     <div class="col-xs-12 nopad">
                         <h4>Vote for how you'd fix this?</h4>
                     </div>
                 </div>
-                <div class="row vote">
+                <div class="row icons">
                     <div class="col-xs-4 nopad">
-                        <div class="center icon blue" ng-click="iconClick()">
-                            <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.title}}" class="img-responsive" />
+                        <div class="center icon blue" ng-click="showResults = true">
+                            <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.alt}}" class="img-responsive" ng-show="true" ng-animate="{show:'animate-show', hide:'animate-hide'}" />
                             Jesus                            
                         </div>
                     </div>
                     <div class="col-xs-4 nopad">
-                        <div class="center icon red" ng-click="iconClick()">
-                            <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.title}}" class="img-responsive" />
+                        <div class="center icon red" ng-click="voteFor('tape')">
+                            <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.alt}}" class="img-responsive" />
                             Duct Tape                        
                         </div>
                     </div>
                     <div class="col-xs-4 nopad">
-                        <div class="center icon yellow" ng-click="iconClick()">
-                            <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.title}}" class="img-responsive" />
+                        <div class="center icon yellow" ng-click="voteFor('whiskey')">
+                            <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.alt}}" class="img-responsive" />
                             Whiskey                            
                         </div>
                     </div>
                 </div>
                 <div class="row comment">
-                    <strong>Oh yea? Tell us why:</strong>
-                    <textarea rows="5" cols="40"></textarea>
-                    <div class="upload">
-                        Have an image you think we should add? <a href="#">Submit Your Image</a>
+                    <div class="col-xs-12 nopad">
+                        <strong>Oh yea? Tell us why:</strong>
+                        <textarea rows="3" cols="40"></textarea>
+                        <div class="upload">
+                            Have an image you think we should add? <a href="#">Submit Your Image</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,8 +77,10 @@
                     <div class="footer-col-left">
                         <img src="img/meme.jpg" alt="Meme" />
                         <ul>
-                            <li><a href="#"><img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
-                            <li><a href="#"><img src="img/twitter-share.png" alt="twitter share" /></a></li>
+                            <li><a href="#">
+                                <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
+                            <li><a href="#">
+                                <img src="img/twitter-share.png" alt="twitter share" /></a></li>
                         </ul>
                     </div>
                     <div class="footer-col-right">
@@ -90,8 +94,10 @@
                     <div class="footer-col-left">
                         <img src="img/meme.jpg" alt="Meme" />
                         <ul>
-                            <li><a href="#"><img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
-                            <li><a href="#"><img src="img/twitter-share.png" alt="twitter share" /></a></li>
+                            <li><a href="#">
+                                <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
+                            <li><a href="#">
+                                <img src="img/twitter-share.png" alt="twitter share" /></a></li>
                         </ul>
                     </div>
                     <div class="footer-col-right">
@@ -105,8 +111,10 @@
                     <div class="footer-col-left">
                         <img src="img/meme.jpg" alt="Meme" />
                         <ul>
-                            <li><a href="#"><img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
-                            <li><a href="#"><img src="img/twitter-share.png" alt="twitter share" /></a></li>
+                            <li><a href="#">
+                                <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
+                            <li><a href="#">
+                                <img src="img/twitter-share.png" alt="twitter share" /></a></li>
                         </ul>
                     </div>
                     <div class="footer-col-right">
@@ -120,8 +128,8 @@
 
     <script src="lib/jquery-2.0.3.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-animate.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/AppController.js"></script>
 </body>
