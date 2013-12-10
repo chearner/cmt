@@ -18,8 +18,18 @@
 <body ng-cloak>
     <div class="container" ng-controller="AppController">
         <div class="row header">
-            <img ng-src="{{ui.header.logo.url}}" alt="{{ui.header.logo.title}}" />
-            <a href="">Like</a><a href="">Share</a>
+            <div class="col-lg-12">
+                <img ng-src="{{ui.header.logo.url}}" alt="{{ui.header.logo.title}}" />
+                <div id="social">
+                    <a href="" class="header-like"><img src="img/header-like.png" alt="like us" /></a>
+                    <a href="" class="header-share"><img src="img/header-share.png" alt="like us" /></a>
+                    <a href="" class="header-watch"><img src="img/header-watch.png" alt="watch" /></a>
+                     <div class="about-channel">
+                        <a href="#">About the Show</a>
+                        <a href="#">Channel Finder</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row main">
             <div class="col-lg-6 center view">
