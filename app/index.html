@@ -35,10 +35,10 @@
             </div>
         </div>
         <div class="row main">
-            <div class="col-sm-6 center view">
+            <div class="col-md-6 center view">
                 <div class="row slider">
                     <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
-                    <div class="pic">
+                    <div class="pic" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
                         <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="fade" />
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                     <a href ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href ng-click="nextPic()">Next</a>
                 </div>
             </div>
-            <div class="col-sm-6 vote">
+            <div class="col-md-6 vote">
                 <div class="row title">
                     <div class="col-xs-12">
                         <h4 class="fade" ng-hide="isVoted">Vote for how you'd fix this?</h4>
@@ -88,9 +88,10 @@
                             <strong>Oh yea? Tell us why:</strong>
                             <textarea ng-model="txtComment"></textarea>
                             <br />
+                            <span class="hash">#PartyDownSouth</span>
                             <button ng-click="shareVote()">Share</button>
                             <div class="upload">
-                                Have an image you think we should add? <a href="#">Submit Your Image</a>
+                                Have an image you think we should add? <br class="visible-xs" /><a href="#">Submit Your Image</a>
                             </div>
                         </div>
                         <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isShared" class="fade" />

@@ -5,6 +5,14 @@ body {
     font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
 }
 
+div {
+    user-select: none;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+}
+
 .f0 {
     font-size: 14px;
 }
@@ -116,7 +124,7 @@ body {
 }
 
 .main {
-    background: #ffffff url('../img/body-back.png') 0 0 repeat;
+    background: #ffffff url('../img/body-back.png') repeat;
     overflow: hidden;
 }
 
@@ -166,7 +174,7 @@ body {
 
     .view .controls {
         padding: 10px 0 20px 0;
-        text-size: 16px;
+        font-size: 16px;
         color: #666666;
     }
 
@@ -187,15 +195,16 @@ body {
 }
 
     .vote .title {
-        margin: 50px 0 0 0;
+        margin: 50px 0 0;
         background: url('../img/vote-title.png') 0 0 no-repeat;
         color: #ffffff;
         height: 50px;
+        width: 355px;
         text-align: left;
     }
 
         .vote .title h4 {
-            text-size: 16px;
+            font-size: 16px;
             font-weight: bold;
             color: #ffffff;
             padding: 3px 0 0 20px;
@@ -213,9 +222,11 @@ body {
             cursor: pointer;
             text-transform: uppercase;
             font-weight: bold;
+            font-size: 14px;
             height: 125px;
             text-align: center;
             position: relative;
+            white-space: nowrap;
         }
 
             .vote .boxes .box .content {
@@ -223,8 +234,13 @@ body {
                 height: 70px;
                 width: 90px;
                 left: 50%;
-                margin: 0 0 0 -45px;
+                margin: 0 0 5px -45px;
             }
+
+                .vote .boxes .box .content img {
+                    height: 70px;
+                    width: 90px;
+                }
 
             .vote .boxes .box .fade {
                 opacity: 1;
@@ -238,7 +254,8 @@ body {
 
     .vote .comment {
         padding: 15px;
-        color: #000000;      
+        color: #000000;
+        height: 180px;
     }
 
         .vote .comment .form {
@@ -251,6 +268,10 @@ body {
                 height: 50px;
                 margin: 5px 0;
                 border: 1px solid #000000;
+            }
+
+            .vote .comment .form .hash {
+                color: #3e59a5;
             }
 
             .vote .comment .form .upload {
@@ -409,9 +430,62 @@ body {
     margin-left: 12px;
 }
 
-
 @media (min-width: 768px) {
     .footer {
         padding: 30px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .view .slider .title {
+        width: 288px;
+    }
+
+    .view .slider .pic {
+        width: 320px;
+        height: 240px;
+        margin: -15px 0 0 -160px;
+    }
+
+        .view .slider .pic img {
+            width: 320px;
+            height: 240px;
+        }
+
+    .vote .boxes .box {
+        font-size: 12px;
+        height: 100px;
+    }
+
+        .vote .boxes .box .content {
+            height: 53px;
+            width: 68px;
+            margin: 0 0 5px -34px;
+        }
+
+            .vote .boxes .box .content img {
+                height: 53px;
+                width: 68px;
+            }
+
+        .vote .boxes .box .results {
+            height: 53px;
+            width: 68px;
+            line-height: 53px;
+        }
+
+    .vote .title {
+        margin: 0 auto;
+        width: 266px;
+    }
+
+        .vote .title h4 {
+            font-size: 14px;
+        }
+}
+
+@media (max-width: 992px) {
+    .vote .title {
+        margin: 0 auto;
     }
 }
