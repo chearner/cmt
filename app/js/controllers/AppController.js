@@ -34,7 +34,8 @@ cmtApp.controller('AppController',
             $scope.picIndex = index;
         };
 
-        $scope.isPicIndex = function (index) {            
+        $scope.isPicIndex = function (index) {
+            console.log($scope.picIndex === index);
             return $scope.picIndex === index;
         };
 
@@ -43,7 +44,7 @@ cmtApp.controller('AppController',
         };
 
         $scope.nextPic = function () {
-            $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;            
+            $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
         };
 
         $scope.showResults = false;
@@ -72,11 +73,11 @@ cmtApp.controller('AppController',
 
         $scope.calcVotes = function (index) {
             var total = 0;
-           
-            for (var i = 0; i < $scope.votes.length; i++) {                
+
+            for (var i = 0; i < $scope.votes.length; i++) {
                 total += parseInt($scope.votes[i].count);
             }
-            
+
             var votes = Math.round($scope.votes[index].count) / total;
 
             $scope.fonts[index].class = 'f' + votes.toString().split('')[2];
@@ -149,24 +150,22 @@ cmtApp.controller('AppController',
 
 cmtApp.animation('.fade', function () {
     return {
-        addClass: function (element, className, done) {
+        beforeAddClass: function (element, className, done) {
             if (className == 'ng-hide') {
                 jQuery(element).animate({
                     opacity: 0
                 }, done);
-            }
-            else {
+            } else {
                 done();
             }
         },
-        removeClass: function (element, className, done) {
+        beforeRemoveClass: function (element, className, done) {
             if (className == 'ng-hide') {
                 element.css('opacity', 0);
                 jQuery(element).animate({
                     opacity: 1
                 }, done);
-            }
-            else {
+            } else {
                 done();
             }
         }

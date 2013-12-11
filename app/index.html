@@ -21,10 +21,13 @@
             <div class="col-lg-12">
                 <img ng-src="{{ui.header.logo.url}}" alt="{{ui.header.logo.title}}" />
                 <div id="social">
-                    <a href="" class="header-like"><img src="img/header-like.png" alt="like us" /></a>
-                    <a href="" class="header-share"><img src="img/header-share.png" alt="like us" /></a>
-                    <a href="" class="header-watch"><img src="img/header-watch.png" alt="watch" /></a>
-                     <div class="about-channel">
+                    <a href="" class="header-like">
+                        <img src="img/header-like.png" alt="like us" /></a>
+                    <a href="" class="header-share">
+                        <img src="img/header-share.png" alt="like us" /></a>
+                    <a href="" class="header-watch">
+                        <img src="img/header-watch.png" alt="watch" /></a>
+                    <div class="about-channel">
                         <a href="#">About the Show</a>
                         <a href="#">Channel Finder</a>
                     </div>
@@ -36,7 +39,7 @@
                 <div class="row slider">
                     <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
                     <div class="pic">
-                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="fade img-responsive" />
+                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="fade" />
                     </div>
                 </div>
                 <div class="row controls">
@@ -52,11 +55,13 @@
                 <div class="row boxes">
                     <div class="col-xs-4 nopad">
                         <div class="box blue" ng-click="voteFor(0)">
-                            <div ng-hide="showResults" class="fade">
-                                <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.alt}}" class="icon" />
-                            </div>
-                            <div ng-hide="!showResults" class="fade">
-                                <div class="results" ng-class="fonts[0].class">{{calcVotes(0)}}%</div>
+                            <div class="content">
+                                <div ng-hide="showResults" class="fade">
+                                    <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.alt}}" />
+                                </div>
+                                <div ng-hide="!showResults" class="fade">
+                                    <div class="results" ng-class="fonts[0].class">{{calcVotes(0)}}%</div>
+                                </div>
                             </div>
                             Jesus
                         </div>
