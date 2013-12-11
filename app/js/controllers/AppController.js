@@ -62,7 +62,7 @@ cmtApp.controller('AppController',
         $scope.voteFor = function (index) {
             $scope.showResults = !$scope.showResults;
 
-            alert('You voted for ' + $scope.votes[index].name + ".");
+            console.log('You voted for ' + $scope.votes[index].name + ".");
 
             $scope.votes = [
                 { name: 'Jesus', count: '50' },
@@ -85,10 +85,10 @@ cmtApp.controller('AppController',
             return votes * 100;
         };
 
-        $scope.submitVote = function (e) {
+        $scope.shareVote = function (e) {
             e.preventDefault();
 
-            alert('submit');
+            alert('you done shared yo shit daddy');
         };
 
         $scope.ui = {

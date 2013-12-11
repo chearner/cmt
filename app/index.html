@@ -41,120 +41,114 @@
                     <div class="pic">
                         <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="fade" />
                     </div>
-                </div>
-                <div class="row controls">
-                    <a href ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href ng-click="nextPic()">Next</a>
+            </div>
+            <div class="row controls">
+                <a href ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href ng-click="nextPic()">Next</a>
+            </div>
+        </div>
+        <div class="col-sm-6 vote">
+            <div class="row title">
+                <div class="col-xs-12 nopad">
+                    <h4 class="fade" ng-hide="showResults">Vote for how you'd fix this?</h4>
+                    <h4 class="fade" ng-hide="!showResults">How your fix stands up to others</h4>
                 </div>
             </div>
-            <div class="col-sm-6 vote">
-                <div class="row title">
-                    <div class="col-xs-12 nopad">
-                        <h4>Vote for how you'd fix this?</h4>
+            <div class="row boxes">
+                <div class="col-xs-4 nopad">
+                    <div class="box blue" ng-click="voteFor(0)">
+                        <div class="content">
+                            <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.alt}}" ng-hide="showResults" class="fade" />
+                            <div class="fade results" ng-class="fonts[0].class" ng-hide="!showResults">{{calcVotes(0)}}%</div>
+                        </div>
+                        Jesus
                     </div>
                 </div>
-                <div class="row boxes">
-                    <div class="col-xs-4 nopad">
-                        <div class="box blue" ng-click="voteFor(0)">
-                            <div class="content">
-                                <div ng-hide="showResults" class="fade">
-                                    <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.alt}}" />
-                                </div>
-                                <div ng-hide="!showResults" class="fade">
-                                    <div class="results" ng-class="fonts[0].class">{{calcVotes(0)}}%</div>
-                                </div>
-                            </div>
-                            Jesus
+                <div class="col-xs-4 nopad">
+                    <div class="box red" ng-click="voteFor(1)">
+                        <div class="content">                       
+                            <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.alt}}" ng-hide="showResults" class="fade" />
+                            <div class="fade results" ng-class="fonts[1].class" ng-hide="!showResults">{{calcVotes(1)}}%</div>
                         </div>
-                    </div>
-                    <div class="col-xs-4 nopad">
-                        <div class="box red" ng-click="voteFor(1)">
-                            <div ng-hide="showResults" class="fade">
-                                <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.alt}}" class="icon" />
-                            </div>
-                            <div ng-hide="!showResults" class="fade">
-                                <div class="results" ng-class="fonts[1].class">{{calcVotes(1)}}%</div>
-                            </div>
-                            Duct Tape
-                        </div>
-                    </div>
-                    <div class="col-xs-4 nopad">
-                        <div class="box yellow" ng-click="voteFor(2)">
-                            <div ng-hide="showResults" class="fade">
-                                <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.alt}}" class="icon" />
-                            </div>
-                            <div ng-hide="!showResults" class="fade">
-                                <div class="results" ng-class="fonts[2].class">{{calcVotes(2)}}%</div>
-                            </div>
-                            Whiskey
-                        </div>
+                        Duct Tape
                     </div>
                 </div>
-                <div class="row comment">
-                    <div class="col-xs-12 nopad">
-                        <strong>Oh yea? Tell us why:</strong>
-                        <textarea rows="3" cols="40"></textarea>
-                        <button ng-click="submitVote($event)">Submit</button>
-                        <div class="upload">
-                            Have an image you think we should add? <a href="#">Submit Your Image</a>
+                <div class="col-xs-4 nopad">
+                    <div class="box yellow" ng-click="voteFor(2)">
+                        <div class="content">                            
+                            <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.alt}}" ng-hide="showResults" class="fade" />
+                            <div class="fade results" ng-class="fonts[2].class" ng-hide="!showResults">{{calcVotes(2)}}%</div>
                         </div>
+                        Whiskey
+                    </div>
+                </div>
+            </div>
+            <div class="row comment">
+                <div class="col-xs-12 nopad">
+                    <strong>Oh yea? Tell us why:</strong>
+                    <textarea rows="3" cols="40"></textarea>
+                    <br />
+                    <button ng-click="shareVote($event)">Share</button>
+                    <div class="upload">
+                        Have an image you think we should add? <a href="#">Submit Your Image</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row footer">
-            <p class="footer-intro"><i>Y’all Only Live Once!</i> Words of wisdom from the Party Down South house:</p>
-            <div class="col-xs-12 col-md-4">
-                <div class="row">
-                    <div class="footer-col-left">
-                        <img src="img/meme.jpg" alt="Meme" />
-                        <ul>
-                            <li><a href="#">
-                                <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
-                            <li><a href="#">
-                                <img src="img/twitter-share.png" alt="twitter share" /></a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col-right">
-                        <p>Tiffany</p>
-                        <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
-                    </div>
+    </div>
+    <div class="row footer">
+        <p class="footer-intro"><i>Y’all Only Live Once!</i> Words of wisdom from the Party Down South house:</p>
+        <div class="col-xs-12 col-md-4">
+            <div class="row">
+                <div class="footer-col-left">
+                    <img src="img/meme.jpg" alt="Meme" />
+                    <ul>
+                        <li><a href="#">
+                            <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
+                        <li><a href="#">
+                            <img src="img/twitter-share.png" alt="twitter share" /></a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <div class="row">
-                    <div class="footer-col-left">
-                        <img src="img/meme.jpg" alt="Meme" />
-                        <ul>
-                            <li><a href="#">
-                                <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
-                            <li><a href="#">
-                                <img src="img/twitter-share.png" alt="twitter share" /></a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col-right">
-                        <p>Tiffany</p>
-                        <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <div class="row">
-                    <div class="footer-col-left">
-                        <img src="img/meme.jpg" alt="Meme" />
-                        <ul>
-                            <li><a href="#">
-                                <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
-                            <li><a href="#">
-                                <img src="img/twitter-share.png" alt="twitter share" /></a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col-right">
-                        <p>Tiffany</p>
-                        <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
-                    </div>
+                <div class="footer-col-right">
+                    <p>Tiffany</p>
+                    <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
                 </div>
             </div>
         </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="row">
+                <div class="footer-col-left">
+                    <img src="img/meme.jpg" alt="Meme" />
+                    <ul>
+                        <li><a href="#">
+                            <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
+                        <li><a href="#">
+                            <img src="img/twitter-share.png" alt="twitter share" /></a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-right">
+                    <p>Tiffany</p>
+                    <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="row">
+                <div class="footer-col-left">
+                    <img src="img/meme.jpg" alt="Meme" />
+                    <ul>
+                        <li><a href="#">
+                            <img src="img/fb-footer-share.png" alt="facebook share" /></a></li>
+                        <li><a href="#">
+                            <img src="img/twitter-share.png" alt="twitter share" /></a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-right">
+                    <p>Tiffany</p>
+                    <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src="lib/jquery-2.0.3.min.js"></script>
