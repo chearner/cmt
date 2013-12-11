@@ -22,40 +22,55 @@
             <a href="">Like</a><a href="">Share</a>
         </div>
         <div class="row main">
-            <div class="col-lg-6 center view">
+            <div class="col-sm-6 center view">
                 <div class="row slider">
                     <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
-                    <div ng-repeat="pic in ui.pics" class="pic">
-                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" class="img-responsive" ng-click="alert('test')" />
+                    <div class="pic">
+                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="fade img-responsive" />
                     </div>
                 </div>
                 <div class="row controls">
-                    <a href="#" ng-click="prevPic()">Back</a> <strong>1</strong> of {{ui.pics.length}} <a href="#" ng-click="nextPic()">Next</a>
+                    <a href ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href ng-click="nextPic()">Next</a>
                 </div>
             </div>
-            <div class="col-lg-6 vote">
+            <div class="col-sm-6 vote">
                 <div class="row title">
                     <div class="col-xs-12 nopad">
                         <h4>Vote for how you'd fix this?</h4>
                     </div>
                 </div>
-                <div class="row icons">
+                <div class="row boxes">
                     <div class="col-xs-4 nopad">
-                        <div class="center icon blue" ng-click="showResults = true">
-                            <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.alt}}" class="img-responsive" ng-show="true" ng-animate="{show:'animate-show', hide:'animate-hide'}" />
-                            Jesus                            
+                        <div class="box blue" ng-click="voteFor(0)">
+                            <div ng-hide="showResults" class="fade">
+                                <img ng-src="{{ui.icons.jesus.url}}" alt="{{ui.icons.jesus.alt}}" class="icon" />
+                            </div>
+                            <div ng-hide="!showResults" class="fade">
+                                <div class="results" ng-class="fonts[0].class">{{calcVotes(0)}}%</div>
+                            </div>
+                            Jesus
                         </div>
                     </div>
                     <div class="col-xs-4 nopad">
-                        <div class="center icon red" ng-click="voteFor('tape')">
-                            <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.alt}}" class="img-responsive" />
-                            Duct Tape                        
+                        <div class="box red" ng-click="voteFor(1)">
+                            <div ng-hide="showResults" class="fade">
+                                <img ng-src="{{ui.icons.tape.url}}" alt="{{ui.icons.tape.alt}}" class="icon" />
+                            </div>
+                            <div ng-hide="!showResults" class="fade">
+                                <div class="results" ng-class="fonts[1].class">{{calcVotes(1)}}%</div>
+                            </div>
+                            Duct Tape
                         </div>
                     </div>
                     <div class="col-xs-4 nopad">
-                        <div class="center icon yellow" ng-click="voteFor('whiskey')">
-                            <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.alt}}" class="img-responsive" />
-                            Whiskey                            
+                        <div class="box yellow" ng-click="voteFor(2)">
+                            <div ng-hide="showResults" class="fade">
+                                <img ng-src="{{ui.icons.whiskey.url}}" alt="{{ui.icons.whiskey.alt}}" class="icon" />
+                            </div>
+                            <div ng-hide="!showResults" class="fade">
+                                <div class="results" ng-class="fonts[2].class">{{calcVotes(2)}}%</div>
+                            </div>
+                            Whiskey
                         </div>
                     </div>
                 </div>
@@ -63,6 +78,7 @@
                     <div class="col-xs-12 nopad">
                         <strong>Oh yea? Tell us why:</strong>
                         <textarea rows="3" cols="40"></textarea>
+                        <button ng-click="submitVote($event)">Submit</button>
                         <div class="upload">
                             Have an image you think we should add? <a href="#">Submit Your Image</a>
                         </div>

@@ -6,19 +6,47 @@ cmtApp.service('picService', function ($http) {
     };
 });
 
-
 cmtApp.controller('AppController',
     function AppController($scope) {
         init();
 
         function init() {
-            //alert('start');
             //picService.getPicsPaged(1234, 1, 1).then(function (data) {
-                //$scope.feedbackItems = data;
+            //$scope.feedbackItems = data;
             //});
+
+            $scope.votes = [
+                { name: 'Jesus', count: '0' },
+                { name: 'Duct Tape', count: '0' },
+                { name: 'Whiskey', count: '0' }
+            ];
+
+            $scope.fonts = [
+                { class: 'f0' },
+                { class: 'f0' },
+                { class: 'f0' }
+            ];
         }
 
-        $scope.picCount = 0;
+        $scope.picIndex = 0;
+
+        $scope.picSetIndex = function (index) {
+            $scope.picIndex = index;
+        };
+
+        $scope.isPicIndex = function (index) {            
+            return $scope.picIndex === index;
+        };
+
+        $scope.prevPic = function () {
+            $scope.picIndex = ($scope.picIndex > 0) ? --$scope.picIndex : $scope.ui.pics.length - 1;
+        };
+
+        $scope.nextPic = function () {
+            $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;            
+        };
+
+        $scope.showResults = false;
 
         $scope.$watch("picCount", function (count) {
             if (count > 5) {
@@ -30,24 +58,44 @@ cmtApp.controller('AppController',
             }
         });
 
-        $scope.voteFor = function (vote) {
-            alert(vote);
+        $scope.voteFor = function (index) {
+            $scope.showResults = !$scope.showResults;
+
+            alert('You voted for ' + $scope.votes[index].name + ".");
+
+            $scope.votes = [
+                { name: 'Jesus', count: '50' },
+                { name: 'Duct Tape', count: '750' },
+                { name: 'Whiskey', count: '200' }
+            ];
+        }
+
+        $scope.calcVotes = function (index) {
+            var total = 0;
+           
+            for (var i = 0; i < $scope.votes.length; i++) {                
+                total += parseInt($scope.votes[i].count);
+            }
+            
+            var votes = Math.round($scope.votes[index].count) / total;
+
+            $scope.fonts[index].class = 'f' + votes.toString().split('')[2];
+
+            return votes * 100;
         };
 
-        $scope.prevPic = function () {
-            $scope.picCount--;
-        };
+        $scope.submitVote = function (e) {
+            e.preventDefault();
 
-        $scope.nextPic = function () {
-            $scope.picCount++;
+            alert('submit');
         };
 
         $scope.ui = {
             header: {
                 logo: {
                     alt: 'Party Down South',
-                    url: 'img/header.png'               
-                }            
+                    url: 'img/header.png'
+                }
             },
             main: {
                 title: {
@@ -59,6 +107,26 @@ cmtApp.controller('AppController',
                 {
                     alt: 'Redneck 1',
                     url: 'data/pds-0001.jpg'
+                },
+                {
+                    alt: 'Redneck 2',
+                    url: 'data/pds-0002.jpg'
+                },
+                {
+                    alt: 'Redneck 3',
+                    url: 'data/pds-0003.jpg'
+                },
+                {
+                    alt: 'Redneck 4',
+                    url: 'data/pds-0004.jpg'
+                },
+                {
+                    alt: 'Redneck 5',
+                    url: 'data/pds-0005.jpg'
+                },
+                {
+                    alt: 'Redneck 6',
+                    url: 'data/pds-0006.jpg'
                 }
             ],
             icons: {
@@ -78,3 +146,29 @@ cmtApp.controller('AppController',
         }
     }
 );
+
+cmtApp.animation('.fade', function () {
+    return {
+        addClass: function (element, className, done) {
+            if (className == 'ng-hide') {
+                jQuery(element).animate({
+                    opacity: 0
+                }, done);
+            }
+            else {
+                done();
+            }
+        },
+        removeClass: function (element, className, done) {
+            if (className == 'ng-hide') {
+                element.css('opacity', 0);
+                jQuery(element).animate({
+                    opacity: 1
+                }, done);
+            }
+            else {
+                done();
+            }
+        }
+    };
+});

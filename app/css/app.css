@@ -5,29 +5,99 @@ body {
     font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
 }
 
-.animate-show, .animate-hide {
-    -webkit-transition: all linear 1s;
-    -moz-transition: all linear 1s;
-    -ms-transition: all linear 1s;
-    -o-transition: all linear 1s;
-    transition: all linear 1s;
+.f0 {
+    font-size: 14px;
 }
 
-.animate-show {
-    opacity: 0;
+.f1 {
+    font-size: 16px;
 }
 
-    .animate-show.animate-show-active {
+.f2 {
+    font-size: 18px;
+}
+
+.f3 {
+    font-size: 20px;
+}
+
+.f4 {
+    font-size: 22px;
+}
+
+.f5 {
+    font-size: 24px;
+}
+
+.f6 {
+    font-size: 26px;
+}
+
+.f7 {
+    font-size: 28px;
+}
+
+.f8 {
+    font-size: 30px;
+}
+
+.f9 {
+    font-size: 32px;
+}
+
+.show-results.ng-hide-add, .show-results.ng-hide-remove {
+    display: block !important;
+}
+
+.show-results.ng-hide-add {
+    -webkit-animation: 1s hide;
+    animation: 1s hide;
+}
+
+@keyframes hide {
+    from {
         opacity: 1;
     }
 
-.animate-hide {
-    opacity: 1;
-}
-
-    .animate-hide.animate-hide-active {
+    to {
         opacity: 0;
     }
+}
+
+@-webkit-keyframes hide {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.show-results.ng-hide-remove {
+    -webkit-animation: 1s show;
+    animation: 1s show;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 .container {
     max-width: 960px;
@@ -76,6 +146,7 @@ body {
             z-index: 1;
             margin: -18px auto 0;
             max-width: 600px;
+            background: #000000;
             border: 1px solid #000000;
         }
 
@@ -116,21 +187,35 @@ body {
             padding: 3px 0 0 50px;
         }
 
-    .vote .icons {
+    .vote .boxes {
         padding: 10px 0 0 0;
     }
 
-        .vote .icons .icon {
+        .vote .boxes .box {
             background: #000000 url('../img/icon-back.png') 0 0 repeat;
             background-size: 100% 100%;
             padding: 15px 0;
             cursor: pointer;
             text-transform: uppercase;
             font-weight: bold;
+            height: 125px;
+            text-align: center;
         }
 
-            .vote .icons .icon img {
+            .vote .boxes .box .fade {
+                opacity: 1;
+            }
+
+            .vote .boxes .box .results {
+                height: 70px;
+                min-height: 70px;
+                line-height: 70px;
+            }
+
+            .vote .boxes .box .icon {
                 margin-bottom: 10px;
+                display: block;
+                margin: 0 auto;
             }
 
     .vote .comment {
