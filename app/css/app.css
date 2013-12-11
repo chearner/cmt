@@ -1,5 +1,7 @@
 body {
-    background: #020000 url('../img/back.jpg') 50% 0 no-repeat;
+    background: url('../img/header-diagonal-bg-small.png') top no-repeat,
+    url('../img/background-image-no-border.jpg') top no-repeat,
+    #020000;
     color: #ffffff;
     font-size: 14px;
     font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
@@ -263,9 +265,9 @@ body {
     background: rgba(0, 0, 0, 0.63);
 }
 
-    .footer > div {
-        overflow: hidden;
-    }
+.footer > div {
+    overflow: hidden;
+}
 
 .footer-col-left img {
     border: 1px solid #000;
@@ -286,19 +288,19 @@ body {
     margin: 5px 0 0;
 }
 
-    .footer-col-left li a {
-        display: block;
-    }
+.footer-col-left li a {
+    display: block;
+}
 
-    .footer-col-left li img {
-        vertical-align: top;
-        width: auto;
-    }
+.footer-col-left li img {
+    vertical-align: top;
+    width: auto;
+}
 
-    .footer-col-left li:first-child {
-        margin-right: 3%;
-        float: left;
-    }
+.footer-col-left li:first-child {
+    margin-right: 3%;
+    float: left;
+}
 
 .footer-intro {
     background: #000000;
@@ -308,13 +310,13 @@ body {
     margin-bottom: 25px;
 }
 
-    .footer-intro i {
-        font-size: 20px;
-        color: #FFF;
-        padding: 0 10px 0;
-        font-style: normal;
-        font-weight: bold;
-    }
+.footer-intro i {
+    font-size: 20px;
+    color: #FFF;
+    padding: 0 10px 0;
+    font-style: normal;
+    font-weight: bold;
+}
 
 .footer-col-right {
     float: left;
@@ -326,13 +328,60 @@ body {
     font-size: 12px;
 }
 
-    .footer-col-right p:first-child {
-        font-weight: bold;
-    }
+.footer-col-right p:first-child {
+    font-weight: bold;
+}
 
 .footer-col-left {
     float: left;
     width: 40%;
+}
+
+/*///////// HEADER  ///////////*/
+.row.header {
+    padding: 8px 0 7px 0;
+}
+
+#social {
+    position: absolute; 
+    top: 30px;
+    right: 20px;
+}
+
+#social a {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.about-channel {
+    overflow: hidden;
+    margin: 10px 0 0;
+}
+
+.about-channel a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
+    float: right;
+}
+
+.about-channel a:first-child {
+    float: left;
+}
+
+.header-like {
+    background: url(../img/header-like.png) no-repeat;
+}
+
+.header-share {
+    background: url(../img/header-share.png) no-repeat;
+    margin-left: 12px;
+}
+
+.header-watch {
+    background: url(../img/header-watch.png) no-repeat;
+    margin-left: 12px;
 }
 
 
