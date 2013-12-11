@@ -385,54 +385,55 @@ div {
 
 /*///////// HEADER  ///////////*/
 .row.header {
-    padding: 8px 0 7px 0;
+    padding: 0;
+}
+
+.header #social {
+    padding: 2px 0;
+    background: white;
 }
 
 #social {
-    position: absolute;
-    top: 30px;
-    right: 20px;
+    position: relative;
+    top: 0;
 }
 
-    #social a {
-        display: inline-block;
-        vertical-align: bottom;
-    }
-
-.about-channel {
-    overflow: hidden;
-    margin: 10px 0 0;
-}
-
-    .about-channel a {
-        color: #fff;
-        font-weight: bold;
-        font-size: 11px;
-        text-transform: uppercase;
-        float: right;
-    }
-
-        .about-channel a:first-child {
-            float: left;
-        }
-
-.header-like {
-    background: url(../img/header-like.png) no-repeat;
-}
-
-.header-share {
-    background: url(../img/header-share.png) no-repeat;
-    margin-left: 12px;
+#social + img {
+    width: 100%;
+    padding: 8px 0;
 }
 
 .header-watch {
     background: url(../img/header-watch.png) no-repeat;
     margin-left: 12px;
+    display: none;
 }
 
 @media (min-width: 768px) {
     .footer {
         padding: 30px 10px;
+    }
+
+    .row.header {
+        padding: 8px 0 7px 0;
+    }
+    
+    #social {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+    }
+
+    #social + img {
+        width: auto;
+    }
+
+    .header #social {
+        background: none;
+    }
+
+    #social + img {
+        padding: 0;
     }
 }
 
