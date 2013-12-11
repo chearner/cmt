@@ -15,6 +15,12 @@ cmtApp.controller('AppController',
             //$scope.feedbackItems = data;
             //});
 
+            $scope.isVoted = false;
+            $scope.isShared = false;
+
+            $scope.picIndex = 0;
+            $scope.voteIndex = 0;
+
             $scope.votes = [
                 { name: 'Jesus', count: '0' },
                 { name: 'Duct Tape', count: '0' },
@@ -26,9 +32,7 @@ cmtApp.controller('AppController',
                 { class: 'f0' },
                 { class: 'f0' }
             ];
-        }
-
-        $scope.picIndex = 0;
+        };
 
         $scope.picSetIndex = function (index) {
             $scope.picIndex = index;
@@ -41,13 +45,15 @@ cmtApp.controller('AppController',
 
         $scope.prevPic = function () {
             $scope.picIndex = ($scope.picIndex > 0) ? --$scope.picIndex : $scope.ui.pics.length - 1;
+            $scope.isVoted = false;
+            $scope.isShared = false;
         };
 
         $scope.nextPic = function () {
             $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
+            $scope.isVoted = false;
+            $scope.isShared = false;
         };
-
-        $scope.showResults = false;
 
         $scope.$watch("picCount", function (count) {
             if (count > 5) {
@@ -60,9 +66,9 @@ cmtApp.controller('AppController',
         });
 
         $scope.voteFor = function (index) {
-            $scope.showResults = !$scope.showResults;
+            $scope.isVoted = !$scope.isVoted;
 
-            console.log('You voted for ' + $scope.votes[index].name + ".");
+            $scope.voteIndex = index;
 
             $scope.votes = [
                 { name: 'Jesus', count: '50' },
@@ -85,10 +91,14 @@ cmtApp.controller('AppController',
             return votes * 100;
         };
 
-        $scope.shareVote = function (e) {
-            e.preventDefault();
+        $scope.shareVote = function () {
+            if ($scope.isVoted) {
+                $scope.isShared = !$scope.isShared;
 
-            alert('you done shared yo shit daddy');
+                alert('You just done shared yo shit, daddy.\n\n\comment: ' + $scope.txtComment + '\n\nid: ' + $scope.ui.pics[$scope.picIndex].id + '\n\nvote: ' + $scope.votes[$scope.voteIndex].name);
+            } else {
+                alert('You gotta vote first, dumbass.');
+            }
         };
 
         $scope.ui = {
@@ -104,28 +114,40 @@ cmtApp.controller('AppController',
                     url: 'img/main-title.png'
                 }
             },
+            form: {
+                done: {
+                    alt: 'Way to get\'r done!',
+                    url: 'img/done.png'
+                }
+            },
             pics: [
                 {
+                    id: 'aPyUE4E+JEdOaDAMF6CwzAQ',
                     alt: 'Redneck 1',
                     url: 'data/pds-0001.jpg'
                 },
                 {
+                    id: 'bPyUE4E+JEdOaDAMF6CwzAQ',
                     alt: 'Redneck 2',
                     url: 'data/pds-0002.jpg'
                 },
                 {
+                    id: 'cPyUE4E+JEdOaDAMF6CwzAQ',
                     alt: 'Redneck 3',
                     url: 'data/pds-0003.jpg'
                 },
                 {
+                    id: 'dPyUE4E+JEdOaDAMF6CwzAQ',
                     alt: 'Redneck 4',
                     url: 'data/pds-0004.jpg'
                 },
                 {
+                    id: 'ePyUE4E+JEdOaDAMF6CwzAQ',
                     alt: 'Redneck 5',
                     url: 'data/pds-0005.jpg'
                 },
                 {
+                    id: 'fPyUE4E+JEdOaDAMF6CwzAQ',
                     alt: 'Redneck 6',
                     url: 'data/pds-0006.jpg'
                 }
@@ -154,7 +176,7 @@ cmtApp.animation('.fade', function () {
             if (className == 'ng-hide') {
                 jQuery(element).animate({
                     opacity: 0
-                }, done);
+                }, 100, done);
             } else {
                 done();
             }
@@ -164,7 +186,7 @@ cmtApp.animation('.fade', function () {
                 element.css('opacity', 0);
                 jQuery(element).animate({
                     opacity: 1
-                }, done);
+                }, 100, done);
             } else {
                 done();
             }
