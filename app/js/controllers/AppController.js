@@ -15,8 +15,9 @@ cmtApp.controller('AppController',
             //$scope.feedbackItems = data;
             //});
 
-            $scope.isVoted = false;
+            $scope.isVoted = false;            
             $scope.isShared = false;
+            $scope.isComplete = false;
 
             $scope.picIndex = 0;
             $scope.voteIndex = 0;
@@ -47,12 +48,14 @@ cmtApp.controller('AppController',
             $scope.picIndex = ($scope.picIndex > 0) ? --$scope.picIndex : $scope.ui.pics.length - 1;
             $scope.isVoted = false;
             $scope.isShared = false;
+            $scope.isComplete = false;
         };
 
         $scope.nextPic = function () {
             $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
             $scope.isVoted = false;
             $scope.isShared = false;
+            $scope.isComplete = false;
         };
 
         $scope.$watch("picCount", function (count) {
@@ -66,15 +69,20 @@ cmtApp.controller('AppController',
         });
 
         $scope.voteFor = function (index) {
-            $scope.isVoted = !$scope.isVoted;
+            if (!$scope.isVoted) {
+                $scope.isVoted = !$scope.isVoted;
+                $scope.isShared = !$scope.isShared;
 
-            $scope.voteIndex = index;
+                $scope.voteIndex = index;
 
-            $scope.votes = [
-                { name: 'Jesus', count: '50' },
-                { name: 'Duct Tape', count: '750' },
-                { name: 'Whiskey', count: '200' }
-            ];
+                $scope.votes = [
+                    { name: 'Jesus', count: '50' },
+                    { name: 'Duct Tape', count: '750' },
+                    { name: 'Whiskey', count: '200' }
+                ];
+            } else {
+                alert('You already voted.');
+            }
         }
 
         $scope.calcVotes = function (index) {
@@ -94,6 +102,7 @@ cmtApp.controller('AppController',
         $scope.shareVote = function () {
             if ($scope.isVoted) {
                 $scope.isShared = !$scope.isShared;
+                $scope.isComplete = !$scope.isComplete;
 
                 alert('You just done shared yo shit, daddy.\n\n\comment: ' + $scope.txtComment + '\n\nid: ' + $scope.ui.pics[$scope.picIndex].id + '\n\nvote: ' + $scope.votes[$scope.voteIndex].name);
             } else {
