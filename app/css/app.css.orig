@@ -57,34 +57,6 @@ div {
     cursor: pointer;
 }
 
-.shrink {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-    .shrink.ng-hide-add, .shrink.ng-hide-remove {
-        display: block !important;
-    }
-
-    .shrink.ng-hide-add {
-        -webkit-transition: all linear .25s;
-        -moz-transition: all linear .25s;
-        -ms-transition: all linear .25s;
-        -o-transition: all linear .25s;
-        transition: all linear .25s;
-        -webkit-tranform: scale(2);
-    }
-
-    .shrink.ng-hide-remove {
-        -webkit-transition: all linear .25s;
-        -moz-transition: all linear .25s;
-        -ms-transition: all linear .25s;
-        -o-transition: all linear .25s;
-        transition: all linear .25s;
-        -webkit-tranform: scale(1);
-    }
-
 .fade {
     position: absolute;
     top: 0;
@@ -185,10 +157,10 @@ div {
 
         .view .slider .title {
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
-        .view .slider .frame {
+        .view .slider .pic {
             position: relative;
             background: #000000;
             width: 400px;
@@ -197,21 +169,11 @@ div {
             margin: -15px 0 0 -200px;
         }
 
-            .view .slider .frame img.pic {
+            .view .slider .pic img {
                 opacity: 1;
                 width: 400px;
                 height: 300px;
                 border: 1px solid #000000;
-            }
-
-            .view .slider .frame img.stamp {
-                opacity: 1;
-                width: 400px;
-                height: 300px;
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 1;
             }
 
     .view .controls {
@@ -472,7 +434,6 @@ div {
 
 .header .col-lg-12 {
     padding: 0;
-    text-align: center;
 }
 
 .header-box > img {
@@ -498,10 +459,10 @@ div {
     display: inline-block;
 }
 
-    #social + img {
-        width: 100%;
-        padding: 8px 0;
-    }
+#social + img {
+    width: 100%;
+    padding: 8px 0;
+}
 
 .header-watch {
     color: #FFF;
@@ -541,11 +502,6 @@ div {
         height: 129px;
     }
 
-    .header .col-lg-12 {
-        padding: 0;
-        text-align: left;
-    }
-
     .footer {
         padding: 30px 10px;
     }
@@ -553,16 +509,16 @@ div {
     .row.header {
         padding: 8px 0 7px 0;
     }
-
+    
     #social {
         position: absolute;
         top: 30px;
         right: 20px;
     }
 
-        #social + img {
-            width: auto;
-        }
+    #social + img {
+        width: auto;
+    }
 
     .header #social {
         background: none;
@@ -595,16 +551,29 @@ div {
         width: 288px;
     }
 
-        .view .slider .frame {
+<<<<<<< HEAD
+    .view .slider .pic {
+        width: 320px;
+        height: 240px;
+        margin: -15px 0 0 -160px;
+    }
+
+    .view .slider .pic img {
+        width: 320px;
+        height: 240px;
+    }
+=======
+        .view .slider .pic {
             width: 300px;
             height: 225px;
             margin: -15px 0 0 -150px;
         }
 
-            .view .slider .frame img {
+            .view .slider .pic img {
                 width: 300px;
                 height: 225px;
             }
+>>>>>>> b620167a5f861779b9f2f02221711c3b15109f9f
 
     .vote .boxes .box {
         font-size: 12px;
@@ -617,11 +586,24 @@ div {
         margin: 0 0 5px -34px;
     }
 
-            .vote .boxes .box .content .icon {
-                height: 53px;
-                width: 68px;
-                line-height: 53px;
-            }
+<<<<<<< HEAD
+    .vote .boxes .box .content img {
+        height: 53px;
+        width: 68px;
+    }
+
+    .vote .boxes .box .results {
+        height: 53px;
+        width: 68px;
+        line-height: 53px;
+    }
+=======
+        .vote .boxes .box .content .icon {
+            height: 53px;
+            width: 68px;
+            line-height: 53px;
+        }
+>>>>>>> b620167a5f861779b9f2f02221711c3b15109f9f
 
     .vote .title {
         margin: 0 auto;
