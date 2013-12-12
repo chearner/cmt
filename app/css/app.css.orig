@@ -434,7 +434,6 @@ div {
 
 .header .col-lg-12 {
     padding: 0;
-    text-align: center;
 }
 
 .header-box > img {
@@ -503,11 +502,6 @@ div {
         height: 129px;
     }
 
-    .header .col-lg-12 {
-        padding: 0;
-        text-align: left;
-    }
-
     .footer {
         padding: 30px 10px;
     }
@@ -557,6 +551,18 @@ div {
         width: 288px;
     }
 
+<<<<<<< HEAD
+    .view .slider .pic {
+        width: 320px;
+        height: 240px;
+        margin: -15px 0 0 -160px;
+    }
+
+    .view .slider .pic img {
+        width: 320px;
+        height: 240px;
+    }
+=======
         .view .slider .pic {
             width: 300px;
             height: 225px;
@@ -567,6 +573,7 @@ div {
                 width: 300px;
                 height: 225px;
             }
+>>>>>>> b620167a5f861779b9f2f02221711c3b15109f9f
 
     .vote .boxes .box {
         font-size: 12px;
@@ -579,11 +586,24 @@ div {
         margin: 0 0 5px -34px;
     }
 
+<<<<<<< HEAD
+    .vote .boxes .box .content img {
+        height: 53px;
+        width: 68px;
+    }
+
+    .vote .boxes .box .results {
+        height: 53px;
+        width: 68px;
+        line-height: 53px;
+    }
+=======
         .vote .boxes .box .content .icon {
             height: 53px;
             width: 68px;
             line-height: 53px;
         }
+>>>>>>> b620167a5f861779b9f2f02221711c3b15109f9f
 
     .vote .title {
         margin: 0 auto;
