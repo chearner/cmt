@@ -78,9 +78,9 @@ div {
     }
 
     .shrink.ng-hide-remove {     
-        transform: scale(2);
-        -moz-transform: scale(2);
-        -webkit-transform: scale(2);
+        transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
     }
 
 .fade {
