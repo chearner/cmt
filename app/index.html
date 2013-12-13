@@ -43,8 +43,9 @@
             <div class="col-md-6 center view">
                 <div class="row slider">
                     <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
-                    <div class="pic" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
-                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="fade" />
+                    <div class="frame" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
+                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="pic fade" />
+                        <img ng-src="{{stamp.url}}" alt="{{stamp.alt}}" ng-repeat="stamp in ui.stamps" ng-hide="!isStampIndex($index)" class="stamp shrink" />
                     </div>
                 </div>
                 <div class="row controls">
@@ -55,7 +56,7 @@
                 <div class="row title">
                     <div class="col-xs-12">
                         <h4 class="fade" ng-hide="isVoted">Vote for how you'd fix this?</h4>
-                        <h4 class="fade" ng-hide="!isVoted">How your fix stands up to others</h4>
+                        <h4 class="fade" ng-hide="!isVoted">Thanks for givin'a fix. Check out the stats:</h4>
                     </div>
                 </div>
                 <div class="row boxes">
@@ -87,7 +88,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row comment">
+                <div class="row comment" id="comment">
                     <div class="col-xs-12 center">
                         <div ng-hide="!isShared" class="form fade">
                             <strong>Oh yea? Tell us why:</strong>
@@ -96,10 +97,10 @@
                             <span class="hash">#PartyDownSouth</span>
                             <button ng-click="shareVote()">Share</button>
                             <div class="upload">
-                                Got a photo you think we should add? <br class="visible-xs" /><a href="#">Send Us An Image</a>
+                                Got a photo you think we should add? <br class="visible-xs" /><a href onclick="$('#upload').click();">Send Us An Image</a><input id="upload" type="file" style="display: none;"/>
                             </div>
                         </div>
-                        <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="fade pointer" ng-click="isShared = true" />
+                        <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="fade pointer" ng-click="doAgain()" />
                     </div>
                 </div>
             </div>

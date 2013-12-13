@@ -20,7 +20,8 @@ cmtApp.controller('AppController',
             $scope.isComplete = false;
 
             $scope.picIndex = 0;
-            $scope.voteIndex = 0;
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
 
             $scope.votes = [
                 { name: 'Jesus', count: '0' },
@@ -35,12 +36,31 @@ cmtApp.controller('AppController',
             ];
         };
 
+        $scope.doAgain = function () {
+            $scope.isVoted = false;
+            $scope.isShared = false;
+            $scope.isComplete = false;
+
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
+
+            ++$scope.picIndex;
+            $scope.txtComment = '';
+        }
+
+        $scope.stampSetIndex = function (index) {
+            $scope.stampIndex = index;
+        };
+
+        $scope.isStampIndex = function (index) {
+            return $scope.stampIndex === index;
+        };
+
         $scope.picSetIndex = function (index) {
             $scope.picIndex = index;
         };
 
         $scope.isPicIndex = function (index) {
-            console.log($scope.picIndex === index);
             return $scope.picIndex === index;
         };
 
@@ -49,6 +69,9 @@ cmtApp.controller('AppController',
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
+
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
         };
 
         $scope.nextPic = function () {
@@ -56,9 +79,12 @@ cmtApp.controller('AppController',
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
+
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
         };
 
-        $scope.$watch("picCount", function (count) {
+        $scope.$watch('picCount', function (count) {
             if (count > 5) {
                 alert('count max');
                 $scope.picCount = 5;
@@ -74,12 +100,16 @@ cmtApp.controller('AppController',
                 $scope.isShared = !$scope.isShared;
 
                 $scope.voteIndex = index;
+                $scope.stampIndex = index;
 
                 $scope.votes = [
                     { name: 'Jesus', count: '50' },
                     { name: 'Duct Tape', count: '750' },
                     { name: 'Whiskey', count: '200' }
                 ];
+
+                $location.hash('comment');
+                $anchorScroll();
             } else {
                 alert('You already voted.');
             }
@@ -129,6 +159,20 @@ cmtApp.controller('AppController',
                     url: 'img/done.png'
                 }
             },
+            stamps: [
+                {
+                    alt: 'Jesus',
+                    url: 'img/stamp-jesus.png'
+                },
+                {
+                    alt: 'Duct Tape',
+                    url: 'img/stamp-tape.png'
+                },
+                {
+                    alt: 'Whiskey',
+                    url: 'img/stamp-whiskey.png'
+                }
+            ],
             pics: [
                 {
                     id: 'aPyUE4E+JEdOaDAMF6CwzAQ',
@@ -195,6 +239,38 @@ cmtApp.animation('.fade', function () {
                 element.css('opacity', 0);
                 jQuery(element).animate({
                     opacity: 1
+                }, 100, done);
+            } else {
+                done();
+            }
+        }
+    };
+});
+
+cmtApp.animation('.shrink', function () {
+    return {
+        beforeAddClass: function (element, className, done) {
+            if (className == 'ng-hide') {
+                jQuery(element).animate({
+                    opacity: 0,
+                    width: '200%',
+                    height: '200%',
+                    left: -200,
+                    top: -150
+                }, 100, done);
+            } else {
+                done();
+            }
+        },
+        beforeRemoveClass: function (element, className, done) {
+            if (className == 'ng-hide') {
+                element.css('opacity', 0);
+                jQuery(element).animate({
+                    opacity: 1,
+                    width: '100%',
+                    height: '100%',
+                    left: 0,
+                    top: 0
                 }, 100, done);
             } else {
                 done();
