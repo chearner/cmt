@@ -252,7 +252,11 @@ cmtApp.animation('.shrink', function () {
         beforeAddClass: function (element, className, done) {
             if (className == 'ng-hide') {
                 jQuery(element).animate({
-                    opacity: 0
+                    opacity: 0,
+                    width: '200%',
+                    height: '200%',
+                    left: -200,
+                    top: -150
                 }, 100, done);
             } else {
                 done();
@@ -262,7 +266,11 @@ cmtApp.animation('.shrink', function () {
             if (className == 'ng-hide') {
                 element.css('opacity', 0);
                 jQuery(element).animate({
-                    opacity: 1
+                    opacity: 1,
+                    width: '100%',
+                    height: '100%',
+                    left: 0,
+                    top: 0
                 }, 100, done);
             } else {
                 done();

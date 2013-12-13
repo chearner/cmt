@@ -68,21 +68,11 @@ div {
     }
 
     .shrink.ng-hide-add {
-        -webkit-transition: all linear .25s;
-        -moz-transition: all linear .25s;
-        -ms-transition: all linear .25s;
-        -o-transition: all linear .25s;
-        transition: all linear .25s;
-        -webkit-tranform: scale(2);
+        
     }
 
     .shrink.ng-hide-remove {
-        -webkit-transition: all linear .25s;
-        -moz-transition: all linear .25s;
-        -ms-transition: all linear .25s;
-        -o-transition: all linear .25s;
-        transition: all linear .25s;
-        -webkit-tranform: scale(1);
+        
     }
 
 .fade {
