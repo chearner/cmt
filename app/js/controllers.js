@@ -1,11 +1,12 @@
 'use strict';
 
-cmtApp.controller('AppController',
-    function AppController($scope) {
+angular.module('cmtApp.controllers', []).
+    controller('ctrlHome', ['$scope', function($scope) {
+
         init();
 
         function init() {
-            $scope.isVoted = false;            
+            $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
 
@@ -210,55 +211,53 @@ cmtApp.controller('AppController',
                 }
             }
         }
+    }])
+    .animation('.fade', function () {
+        return {
+            beforeAddClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    jQuery(element).animate({
+                        opacity: 0
+                    }, 50, done);
+                } else {
+                    done();
+                }
+            },
+            beforeRemoveClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    element.css('opacity', 0);
+                    jQuery(element).animate({
+                        opacity: 1
+                    }, 50, done);
+                } else {
+                    done();
+                }
+            }
+        };
+    })
+    .animation('.shrink', function () {
+        return {
+            beforeAddClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    $(element).animate({
+                        opacity: 0
+                    }, 25, done);
+                } else {
+                    done();
+                }
+            },
+            beforeRemoveClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    $(element).css({
+                        opacity: 0
+                    });
+                    $(element).animate({
+                        opacity: 1
+                    }, 25, done);
+                } else {
+                    done();
+                }
+            }
+        };
     }
 );
-
-cmtApp.animation('.fade', function () {
-    return {
-        beforeAddClass: function (element, className, done) {
-            if (className == 'ng-hide') {
-                jQuery(element).animate({
-                    opacity: 0
-                }, 50, done);
-            } else {
-                done();
-            }
-        },
-        beforeRemoveClass: function (element, className, done) {
-            if (className == 'ng-hide') {
-                element.css('opacity', 0);
-                jQuery(element).animate({
-                    opacity: 1
-                }, 50, done);
-            } else {
-                done();
-            }
-        }
-    };
-});
-
-cmtApp.animation('.shrink', function () {
-    return {
-        beforeAddClass: function (element, className, done) {
-            if (className == 'ng-hide') {
-                $(element).animate({
-                    opacity: 0
-                }, 25, done);                
-            } else {
-                done();
-            }
-        },
-        beforeRemoveClass: function (element, className, done) {
-            if (className == 'ng-hide') {                
-                $(element).css({
-                    opacity: 0
-                });                
-                $(element).animate({
-                    opacity: 1
-                }, 25, done);
-            } else {
-                done();
-            }
-        }
-    };
-});
