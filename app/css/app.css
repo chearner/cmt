@@ -1,7 +1,12 @@
 body {
     color: #ffffff;
     font-size: 14px;
+    line-height: 1.2em;
     font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
+}
+
+p {
+    line-height: 1.2em;
 }
 
 div {
@@ -526,8 +531,9 @@ div {
     text-align: center;
 }
 
-#social a {
+#social a, #social div {
     display: inline-block;
+    margin: 0 2px;
 }
 
     #social + img {
@@ -538,6 +544,7 @@ div {
 .header-watch {
     color: #FFF;
     font-size: 11px;
+    line-height: 20px;
     background: #c2347c;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -545,12 +552,14 @@ div {
     margin-left: 12px;
     vertical-align: top;
     display: block;
-    padding: 2px 6px 0 4px;
+    padding: 0px 6px 0px 4px;
 }
 
 .header-watch:before {
     content: url(../img/play-btn.png);
     display: inline-block;
+    position: relative;
+    top: 3px;
     margin-right: 4px;
 }
 
