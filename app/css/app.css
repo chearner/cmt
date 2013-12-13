@@ -1,5 +1,4 @@
 body {
-    background: url('../img/header-diagonal-bg-small.png') 0 29px no-repeat, url('../img/background-image-no-border.jpg') top no-repeat, #020000;
     color: #ffffff;
     font-size: 14px;
     font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
@@ -365,23 +364,24 @@ div {
     margin: 0 auto;
 }
 
-/*////// FOOTER ///////*/
+/*////// MEMES ///////*/
 
-.footer {
+.memes {
     background: #000000;
     background: rgba(0, 0, 0, 0.63);
+    text-align: center;
 }
 
-    .footer > div {
-        overflow: hidden;
-    }
+.memes > div {
+    overflow: hidden;
+}
 
-.footer-col-left img {
+.memes-col-left img {
     border: 1px solid #000;
     width: 100%;
 }
 
-.footer-col-left ul {
+.memes-col-left ul {
     list-style: none;
     margin: 0;
     width: 100%;
@@ -389,60 +389,96 @@ div {
     padding: 0;
 }
 
-.footer-col-left li {
+.memes-col-left li {
     float: right;
     display: block;
     margin: 5px 0 0;
 }
 
-    .footer-col-left li a {
-        display: block;
-    }
+.memes-col-left li a {
+    display: block;
+}
+    
+.memes-col-left li img {
+    vertical-align: top;
+    width: auto;
+}
 
-    .footer-col-left li img {
-        vertical-align: top;
-        width: auto;
-    }
+.memes-col-left li:first-child {
+    margin-right: 3%;
+    float: left;
+}
 
-    .footer-col-left li:first-child {
-        margin-right: 3%;
-        float: left;
-    }
-
-.footer-intro {
+.memes-intro {
     background: #000000;
     color: #808080;
     font-size: 16px;
     padding: 7px 15px;
     margin-bottom: 25px;
+    text-align: left;
 }
 
-    .footer-intro i {
-        font-size: 20px;
-        color: #FFF;
-        padding: 0 10px 0;
-        font-style: normal;
-        font-weight: bold;
-    }
+.memes-intro i {
+    font-size: 20px;
+    color: #FFF;
+    padding: 0 10px 0;
+    font-style: normal;
+    font-weight: bold;
+    display: block;
+}
 
-.footer-col-right {
+.memes-col-right {
     float: left;
+    text-align: left;
     width: 58%;
     padding-left: 2%;
 }
 
-.footer-col-right {
+.memes-col-right {
     font-size: 12px;
 }
 
-    .footer-col-right p:first-child {
-        font-weight: bold;
-    }
+.memes-col-right p:first-child {
+    font-weight: bold;
+}
 
-.footer-col-left {
+.memes-col-left {
     float: left;
     width: 40%;
 }
+
+/*////// FOOTER ///////*/
+
+.footer {
+    padding: 20px 0 25px;
+    text-align: center;
+    font-size: 14px; 
+    font-weight: bold;
+}
+
+.footer a {
+    color: #fff;
+    padding: 0 13px;
+    text-transform: uppercase;
+}
+
+.footer .secondary-footer {
+    font-size: 10px;
+    margin: 10px 0 16px;
+}
+
+.footer .copyright a {
+    display: block;
+    font-size: 10px;
+    margin-top: 20px;
+    text-transform: none;
+    font-weight: normal;
+}
+
+.footer img {
+    width: auto;
+}
+
 
 /*///////// HEADER  ///////////*/
 .header {
@@ -527,7 +563,7 @@ div {
 
 @media (min-width: 768px) {
     body {
-        background: url('../img/background-image-no-border.jpg') top no-repeat, #020000;
+        background: url('../img/background-image-no-border.jpg') 0 129px no-repeat, #020000;
     }
 
     .header {
@@ -539,8 +575,16 @@ div {
         text-align: left;
     }
 
-    .footer {
+    .memes {
         padding: 30px 10px;
+    }
+
+    .memes-intro {
+        text-align: center;
+    }
+
+    .memes-intro i {
+        display: inline;
     }
 
     .row.header {
@@ -567,11 +611,31 @@ div {
 }
 
 @media (max-width: 450px) {
+    body {
+        background: url('../img/background-450.jpg') top no-repeat, #020000;
+    }
+
     .header-box > img {
         width: 100%;
     }
+
+    .footer a {
+        padding: 0 5px;
+    }
+
+    .footer .col-xs-12 {
+        padding: 0;
+    }
 }
+
+@media only screen and (min-width : 451px) and (max-width : 768px) {
+    body {
+        background: url('../img/background-768.jpg') top no-repeat, #020000;
+    }    
+}
+
 @media (max-width: 768px) {
+
     .header {
         padding: 0 10px 5px;
         height: auto;
