@@ -60,24 +60,38 @@ div {
     position: absolute;
     top: 0;
     left: 0;
+    -webkit-transition: all .1s ease; 
+    -moz-transition: all .1s ease; 
+    -ms-transition: all .1s ease; 
+    -o-transition: all .1s ease; 
+    transition: all .1s ease;
 }
 
     .shrink.ng-hide-add, .shrink.ng-hide-remove {
-        display: block !important;
+        display: block !important;        
     }
 
     .shrink.ng-hide-add {
-        
+        transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
     }
 
-    .shrink.ng-hide-remove {
-        
+    .shrink.ng-hide-remove {     
+        transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
     }
 
 .fade {
     position: absolute;
     top: 0;
     left: 0;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition: all .1s linear;
 }
 
     .fade.ng-hide-add, .fade.ng-hide-remove {
@@ -85,19 +99,11 @@ div {
     }
 
     .fade.ng-hide-add {
-        -webkit-transition: all linear .25s;
-        -moz-transition: all linear .25s;
-        -ms-transition: all linear .25s;
-        -o-transition: all linear .25s;
-        transition: all linear .25s;
+        
     }
 
     .fade.ng-hide-remove {
-        -webkit-transition: all linear .25s;
-        -moz-transition: all linear .25s;
-        -ms-transition: all linear .25s;
-        -o-transition: all linear .25s;
-        transition: all linear .25s;
+        
     }
 
 @keyframes hide {
@@ -197,9 +203,6 @@ div {
                 opacity: 1;
                 width: 400px;
                 height: 300px;
-                position: absolute;
-                top: 0;
-                left: 0;
                 z-index: 1;
             }
 
@@ -247,7 +250,7 @@ div {
     }
 
         .vote .boxes .box {
-            background: #000000 url('../img/icon-back.png') 0 0 repeat;
+            background: #000000 url('../img/icon-back.png') 0 0 no-repeat;
             background-size: 100% 100%;
             padding: 10px 0;
             cursor: pointer;

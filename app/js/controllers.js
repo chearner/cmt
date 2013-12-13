@@ -1,21 +1,12 @@
 'use strict';
 
-cmtApp.service('picService', function ($http) {
-    this.getPicsPaged = function (nodeId, pageNumber, take) {
-        //return $http.get('myUrl');
-    };
-});
+angular.module('cmtApp.controllers', []).
+    controller('ctrlHome', ['$scope', function($scope) {
 
-cmtApp.controller('AppController',
-    function AppController($scope) {
         init();
 
         function init() {
-            //picService.getPicsPaged(1234, 1, 1).then(function (data) {
-            //$scope.feedbackItems = data;
-            //});
-
-            $scope.isVoted = false;            
+            $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
 
@@ -108,8 +99,8 @@ cmtApp.controller('AppController',
                     { name: 'Whiskey', count: '200' }
                 ];
 
-                $location.hash('comment');
-                $anchorScroll();
+                //$location.hash('comment');
+                //$anchorScroll();
             } else {
                 alert('You already voted.');
             }
@@ -220,61 +211,53 @@ cmtApp.controller('AppController',
                 }
             }
         }
+    }])
+    .animation('.fade', function () {
+        return {
+            beforeAddClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    jQuery(element).animate({
+                        opacity: 0
+                    }, 50, done);
+                } else {
+                    done();
+                }
+            },
+            beforeRemoveClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    element.css('opacity', 0);
+                    jQuery(element).animate({
+                        opacity: 1
+                    }, 50, done);
+                } else {
+                    done();
+                }
+            }
+        };
+    })
+    .animation('.shrink', function () {
+        return {
+            beforeAddClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    $(element).animate({
+                        opacity: 0
+                    }, 25, done);
+                } else {
+                    done();
+                }
+            },
+            beforeRemoveClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    $(element).css({
+                        opacity: 0
+                    });
+                    $(element).animate({
+                        opacity: 1
+                    }, 25, done);
+                } else {
+                    done();
+                }
+            }
+        };
     }
 );
-
-cmtApp.animation('.fade', function () {
-    return {
-        beforeAddClass: function (element, className, done) {
-            if (className == 'ng-hide') {
-                jQuery(element).animate({
-                    opacity: 0
-                }, 100, done);
-            } else {
-                done();
-            }
-        },
-        beforeRemoveClass: function (element, className, done) {
-            if (className == 'ng-hide') {
-                element.css('opacity', 0);
-                jQuery(element).animate({
-                    opacity: 1
-                }, 100, done);
-            } else {
-                done();
-            }
-        }
-    };
-});
-
-cmtApp.animation('.shrink', function () {
-    return {
-        beforeAddClass: function (element, className, done) {
-            if (className == 'ng-hide') {
-                jQuery(element).animate({
-                    opacity: 0,
-                    width: '200%',
-                    height: '200%',
-                    left: -200,
-                    top: -150
-                }, 100, done);
-            } else {
-                done();
-            }
-        },
-        beforeRemoveClass: function (element, className, done) {
-            if (className == 'ng-hide') {
-                element.css('opacity', 0);
-                jQuery(element).animate({
-                    opacity: 1,
-                    width: '100%',
-                    height: '100%',
-                    left: 0,
-                    top: 0
-                }, 100, done);
-            } else {
-                done();
-            }
-        }
-    };
-});
