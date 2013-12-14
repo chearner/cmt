@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('cmtApp.controllers', []).
-    controller('ctrlHome', ['$scope', function($scope) {
+    controller('homeController', ['$scope', 'dataServices', function ($scope, dataServices) {
+        $scope.dataServices = dataServices;
 
         init();
 
@@ -86,6 +87,10 @@ angular.module('cmtApp.controllers', []).
         });
 
         $scope.voteFor = function (index) {
+            dataServices.get(function (data) {
+                console.log(data.test);
+            });
+
             if (!$scope.isVoted) {
                 $scope.isVoted = !$scope.isVoted;
                 $scope.isShared = !$scope.isShared;
