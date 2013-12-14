@@ -1,4 +1,44 @@
-<div class="row main">
+<!doctype html>
+<html lang="en" ng-app="cmtApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta property="og:site_name" content="CMT: Country Music Television">
+    <meta property="og:title" content="CMT">
+    <meta property="og:description" content="Visit CMT.com">
+    <meta property="og:app_id" content="">
+    <meta property="fb:admins" content="">
+    <title>Party Down South - Jesus, Ducktape or Whiskey?</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
+</head>
+<body ng-cloak id="fb-root">
+    <div class="header gradient">
+        <div class="container">
+            <div class="col-lg-12 header-box">
+                <div class="row">
+                    <div id="social">
+                        <div class="fb-like" data-href="http://jesusducttapeorwhiskey.com" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                        <a href="" class="header-watch">Watch Trailer</a>
+                    </div>
+                </div>
+                <img src="img/header.png" alt="Pary Down South" />
+            </div>
+        </div>
+    </div>
+<<<<<<< HEAD
+    <div class="container" ng-controller="AppController">
+        <div class="row main">
             <div class="col-md-6 center view">
                 <div class="row slider">
                     <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
@@ -65,7 +105,7 @@
             </div>
         </div>
         <div class="row memes">
-            <p class="memes-intro"><i>Y'all Only Live Once!</i> Words of wisdom from the Party Down South house:</p>
+            <p class="memes-intro"><i>Y’all Only Live Once!</i> Words of wisdom from the Party Down South house:</p>
             <div class="col-xs-12 col-md-4">
                 <div class="row">
                     <div class="memes-col-left">
@@ -92,7 +132,7 @@
                     </div>
                     <div class="memes-col-right">
                         <p>Tiffany</p>
-                        <p>"I'm not a whore, but if it happens it happens, which if I'm drinking, most of the time it happens."</p>
+                        <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
                     </div>
                 </div>
             </div>
@@ -107,7 +147,7 @@
                     </div>
                     <div class="memes-col-right">
                         <p>Tiffany</p>
-                        <p>"I'm not a whore, but if it happens it happens, which if I'm drinking, most of the time it happens."</p>
+                        <p>"I’m not a whore, but if it happens it happens, which if I’m drinking, most of the time it happens."</p>
                     </div>
                 </div>
             </div>
@@ -128,3 +168,34 @@
                 </div>
             </div>
         </div>
+    </div>
+=======
+    <div ng-view class="container"></div>    
+>>>>>>> a98ab9dd93db4fc5b1d4feedae3a8e69d25429b4
+
+    <script src="lib/jquery-2.0.3.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
+    <script src="lib/angular/angular-touch.min.js"></script>
+    <script src="lib/angular/angular-animate.min.js"></script>
+    <script src="js/app.js"></script>
+<<<<<<< HEAD
+    <script src="js/controllers/AppController.js"></script>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=235965576565291";
+      fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=fayded"></script>
+=======
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>    
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+>>>>>>> a98ab9dd93db4fc5b1d4feedae3a8e69d25429b4
+</body>
+</html>

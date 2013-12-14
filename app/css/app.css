@@ -1,7 +1,12 @@
 body {
     color: #ffffff;
     font-size: 14px;
+    line-height: 1.2em;
     font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
+}
+
+p {
+    line-height: 1.2em;
 }
 
 div {
@@ -374,6 +379,14 @@ div {
 
 .memes > div {
     overflow: hidden;
+    margin-bottom: 20px;
+    width: 312px;
+    float: left;
+}
+
+.memes-col-left {
+    float: left;
+    width: auto;
 }
 
 .memes-col-left img {
@@ -440,11 +453,6 @@ div {
 
 .memes-col-right p:first-child {
     font-weight: bold;
-}
-
-.memes-col-left {
-    float: left;
-    width: 40%;
 }
 
 /*////// FOOTER ///////*/
@@ -523,8 +531,9 @@ div {
     text-align: center;
 }
 
-#social a {
+#social a, #social div {
     display: inline-block;
+    margin: 0 2px;
 }
 
     #social + img {
@@ -535,6 +544,7 @@ div {
 .header-watch {
     color: #FFF;
     font-size: 11px;
+    line-height: 20px;
     background: #c2347c;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -542,12 +552,14 @@ div {
     margin-left: 12px;
     vertical-align: top;
     display: block;
-    padding: 2px 6px 0 4px;
+    padding: 0px 6px 0px 4px;
 }
 
 .header-watch:before {
     content: url(../img/play-btn.png);
     display: inline-block;
+    position: relative;
+    top: 3px;
     margin-right: 4px;
 }
 
@@ -577,10 +589,6 @@ div {
 
     .memes {
         padding: 30px 10px;
-    }
-
-    .memes-intro {
-        text-align: center;
     }
 
     .memes-intro i {
@@ -652,21 +660,21 @@ div {
         width: 288px;
     }
 
-        .view .slider .frame {
-            width: 300px;
-            height: 225px;
-            margin: -15px 0 0 -150px;
-        }
+    .view .slider .frame {
+        width: 300px;
+        height: 225px;
+        margin: -15px 0 0 -150px;
+    }
 
-            .view .slider .frame img.pic {
-                width: 300px;
-                height: 225px;
-            }
+    .view .slider .frame img.pic {
+        width: 300px;
+        height: 225px;
+    }
 
-            .view .slider .frame img.stamp {
-                width: 300px;
-                height: 225px;
-            }
+    .view .slider .frame img.stamp {
+        width: 300px;
+        height: 225px;
+    }
 
     .vote .boxes .box {
         font-size: 12px;
@@ -679,11 +687,11 @@ div {
         margin: 0 0 5px -34px;
     }
 
-            .vote .boxes .box .content .icon {
-                height: 53px;
-                width: 68px;
-                line-height: 53px;
-            }
+    .vote .boxes .box .content .icon {
+        height: 53px;
+        width: 68px;
+        line-height: 53px;
+    }
 
     .vote .title {
         margin: 0 auto;
@@ -701,6 +709,18 @@ div {
 
     .vote .comment {
         padding: 5px 15px;
+    }
+
+    .memes-intro i {
+        padding: 0;
+    }
+
+    .memes .row {
+        padding: 0 10px;
+    }
+
+    .memes > div {
+        width: auto;
     }
 }
 
