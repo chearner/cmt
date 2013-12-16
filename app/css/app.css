@@ -88,7 +88,7 @@ div {
         -webkit-transform: scale(1.5);
     }
 
-.fade {
+.blend {
     position: absolute;
     top: 0;
     left: 0;
@@ -99,15 +99,15 @@ div {
     transition: all .1s linear;
 }
 
-    .fade.ng-hide-add, .fade.ng-hide-remove {
+    .blend.ng-hide-add, .blend.ng-hide-remove {
         display: block !important;
     }
 
-    .fade.ng-hide-add {
+    .blend.ng-hide-add {
         
     }
 
-    .fade.ng-hide-remove {
+    .blend.ng-hide-remove {
         
     }
 
@@ -281,7 +281,7 @@ div {
                     width: 90px;
                 }
 
-            .vote .boxes .box .fade {
+            .vote .boxes .box .blend {
                 opacity: 1;
             }
 
@@ -325,6 +325,7 @@ div {
             width: 100%;
             opacity: 1;
             text-align: left;
+            font-size: 14px;
         }
 
             .vote .comment .form textarea {

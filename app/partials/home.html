@@ -1,130 +1,164 @@
 <div class="row main">
-            <div class="col-md-6 center view">
-                <div class="row slider">
-                    <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
-                    <div class="frame" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
-                        <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="pic fade" />
-                        <img ng-src="{{stamp.url}}" alt="{{stamp.alt}}" ng-repeat="stamp in ui.stamps" ng-hide="!isStampIndex($index)" class="stamp shrink" />
-                    </div>
-                </div>
-                <div class="row controls">
-                    <a href ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href ng-click="nextPic()">Next</a>
-                </div>
-            </div>
-            <div class="col-md-6 vote">
-                <div class="row title">
-                    <div class="col-xs-12">
-                        <h4 class="fade" ng-hide="isVoted">Vote for how you'd fix this?</h4>
-                        <h4 class="fade" ng-hide="!isVoted">Thanks for givin'a fix. Check out the stats:</h4>
-                    </div>
-                </div>
-                <div class="row boxes">
-                    <div class="col-xs-4" style="padding-right: 5px;">
-                        <div class="box blue" ng-click="voteFor(0)">
-                            <div class="content">
-                                <div class="fade icon jesus" ng-hide="isVoted"></div>                              
-                                <div class="fade icon jesus-alt" ng-class="fonts[0].class" ng-hide="!isVoted">{{displayVotes(0)}}%</div>
-                            </div>
-                            Jesus
-                        </div>
-                    </div>
-                    <div class="col-xs-4" style="padding-left: 10px; padding-right: 10px">
-                        <div class="box red" ng-click="voteFor(1)">
-                            <div class="content">
-                                <div class="fade icon tape" ng-hide="isVoted"></div>
-                                <div class="fade icon tape-alt" ng-class="fonts[1].class" ng-hide="!isVoted">{{displayVotes(1)}}%</div>
-                            </div>
-                            Duct Tape
-                        </div>
-                    </div>
-                    <div class="col-xs-4" style="padding-left: 5px;">
-                        <div class="box yellow" ng-click="voteFor(2)">
-                            <div class="content">
-                                <div class="fade icon whiskey" ng-hide="isVoted"></div>
-                                <div class="fade icon whiskey-alt" ng-class="fonts[2].class" ng-hide="!isVoted">{{displayVotes(2)}}%</div>
-                            </div>
-                            Whiskey
-                        </div>
-                    </div>
-                </div>
-                <div class="row comment" id="comment">
-                    <div class="col-xs-12 center">
-                        <div ng-hide="!isShared" class="form fade">
-                            <strong>Oh yea? Tell us why:</strong>
-                            <textarea ng-model="txtComment"></textarea>
-                            <br />
-                            <span class="hash">#PartyDownSouth</span>
-                            <button ng-click="shareVote()">Share</button>
-                            <div class="upload">
-                                Got a photo you think we should add? <br class="visible-xs" /><a href onclick="$('#upload').click();">Send Us An Image</a><input id="upload" type="file" style="display: none;"/>
-                            </div>
-                        </div>
-                        <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="fade pointer" ng-click="tryAgain()" />
-                    </div>
-                </div>
+    <div class="col-md-6 center view">
+        <div class="row slider">
+            <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
+            <div class="frame" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
+                <img ng-src="{{pic.url}}" alt="{{pic.alt}}" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="pic blend" />
+                <img ng-src="{{stamp.url}}" alt="{{stamp.alt}}" ng-repeat="stamp in ui.stamps" ng-hide="!isStampIndex($index)" class="stamp shrink" />
             </div>
         </div>
-        <div class="row memes">
-            <p class="memes-intro"><i>Y'all Only Live Once!</i> Words of wisdom from the Party Down South house:</p>
-            <div class="col-xs-12 col-md-4">
-                <div class="row">
-                    <div class="memes-col-left">
-                        <img src="img/meme.jpg" alt="Meme" />
-                        <ul>
-                            <li class="fb-share-button" data-href="http://jesusducttapeorwhiskey.com" data-type="button"></li>
-                            <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jesusducttapeorwhiskey.com" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
-                        </ul>
-                    </div>
-                    <div class="memes-col-right">
-                        <p>Tiffany</p>
-                        <p>"OMG! I just realized, I AM a whore."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <div class="row">
-                    <div class="memes-col-left">
-                        <img src="img/meme.jpg" alt="Meme" />
-                        <ul>
-                            <li class="fb-share-button" data-href="http://jesusducttapeorwhiskey.com" data-type="button"></li>
-                            <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jesusducttapeorwhiskey.com" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
-                        </ul>
-                    </div>
-                    <div class="memes-col-right">
-                        <p>Tiffany</p>
-                        <p>"I'm not a whore, but if it happens it happens, which if I'm drinking, most of the time it happens."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <div class="row">
-                    <div class="memes-col-left">
-                        <img src="img/meme.jpg" alt="Meme" />
-                        <ul>
-                            <li class="fb-share-button" data-href="http://jesusducttapeorwhiskey.com" data-type="button"></li>
-                            <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jesusducttapeorwhiskey.com" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
-                        </ul>
-                    </div>
-                    <div class="memes-col-right">
-                        <p>Tiffany</p>
-                        <p>"I'm not a whore, but if it happens it happens, which if I'm drinking, most of the time it happens."</p>
-                    </div>
-                </div>
-            </div>
+        <div class="row controls">
+            <a href ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href ng-click="nextPic()">Next</a>
         </div>
-        <div class="row footer">
+    </div>
+    <div class="col-md-6 vote">
+        <div class="row title">
             <div class="col-xs-12">
-                <div class="row">
-                    <a href="#">About the Show</a>|<a href="#">Channel Finder</a>
+                <h4 class="blend" ng-hide="isVoted">Vote for how you'd fix this?</h4>
+                <h4 class="blend" ng-hide="!isVoted">Thanks for givin'a fix. Check out the stats:</h4>
+            </div>
+        </div>
+        <div class="row boxes">
+            <div class="col-xs-4" style="padding-right: 5px;">
+                <div class="box blue" ng-click="voteFor(0)">
+                    <div class="content">
+                        <div class="blend icon jesus" ng-hide="isVoted"></div>
+                        <div class="blend icon jesus-alt" ng-class="oFonts[0].class" ng-hide="!isVoted">{{displayPercent(0)}}%</div>
+                    </div>
+                    Jesus
                 </div>
-                <div class="row secondary-footer">
-                    <a href="#">Terms &amp; Conditions</a>|<a href="#">Privacy Policy</a>
+            </div>
+            <div class="col-xs-4" style="padding-left: 10px; padding-right: 10px">
+                <div class="box red" ng-click="voteFor(1)">
+                    <div class="content">
+                        <div class="blend icon tape" ng-hide="isVoted"></div>
+                        <div class="blend icon tape-alt" ng-class="oFonts[1].class" ng-hide="!isVoted">{{displayPercent(1)}}%</div>
+                    </div>
+                    Duct Tape
                 </div>
-                <div class="row">
-                    <a href="#"><img src="img/footer-ad.jpg" /></a>
-                </div>
-                <div class="row copyright">
-                    <a href="#">Copyright @2013</a>
+            </div>
+            <div class="col-xs-4" style="padding-left: 5px;">
+                <div class="box yellow" ng-click="voteFor(2)">
+                    <div class="content">
+                        <div class="blend icon whiskey" ng-hide="isVoted"></div>
+                        <div class="blend icon whiskey-alt" ng-class="oFonts[2].class" ng-hide="!isVoted">{{displayPercent(2)}}%</div>
+                    </div>
+                    Whiskey
                 </div>
             </div>
         </div>
+        <div class="row comment" id="comment">
+            <div class="col-xs-12 center">
+                <div ng-hide="!isShared" class="form blend">
+                    <strong>Oh yea? Tell us why:</strong>
+                    <textarea ng-model="txtComment"></textarea>
+                    <br />
+                    <span class="hash">#PartyDownSouth</span>
+                    <button ng-click="shareVote()">Share</button>
+                    <div class="upload">
+                        Got a photo you think we should add?
+                        <br class="visible-xs" />
+                        <a href data-toggle="modal" data-target="#fileUpload">Send Us An Image</a>
+                        <!--
+                        <a href onclick="$('#upload').click();">Send Us An Image</a><input id="upload" type="file" style="display: none;" />
+                        -->
+                    </div>
+                </div>
+                <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="blend pointer" ng-click="tryAgain()" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row memes">
+    <p class="memes-intro"><i>Y'all Only Live Once!</i> Words of wisdom from the Party Down South house:</p>
+    <div class="col-xs-12 col-md-4">
+        <div class="row">
+            <div class="memes-col-left">
+                <img src="img/meme.jpg" alt="Meme" />
+                <ul>
+                    <li class="fb-share-button" data-href="http://jesusducttapeorwhiskey.com" data-type="button"></li>
+                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jesusducttapeorwhiskey.com" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
+                </ul>
+            </div>
+            <div class="memes-col-right">
+                <p>Tiffany</p>
+                <p>"OMG! I just realized, I AM a whore."</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <div class="row">
+            <div class="memes-col-left">
+                <img src="img/meme.jpg" alt="Meme" />
+                <ul>
+                    <li class="fb-share-button" data-href="http://jesusducttapeorwhiskey.com" data-type="button"></li>
+                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jesusducttapeorwhiskey.com" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
+                </ul>
+            </div>
+            <div class="memes-col-right">
+                <p>Tiffany</p>
+                <p>"I'm not a whore, but if it happens it happens, which if I'm drinking, most of the time it happens."</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <div class="row">
+            <div class="memes-col-left">
+                <img src="img/meme.jpg" alt="Meme" />
+                <ul>
+                    <li class="fb-share-button" data-href="http://jesusducttapeorwhiskey.com" data-type="button"></li>
+                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jesusducttapeorwhiskey.com" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
+                </ul>
+            </div>
+            <div class="memes-col-right">
+                <p>Tiffany</p>
+                <p>"I'm not a whore, but if it happens it happens, which if I'm drinking, most of the time it happens."</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row footer">
+    <div class="col-xs-12">
+        <div class="row">
+            <a href="#">About the Show</a>|<a href="#">Channel Finder</a>
+        </div>
+        <div class="row secondary-footer">
+            <a href="#">Terms &amp; Conditions</a>|<a href="#">Privacy Policy</a>
+        </div>
+        <div class="row">
+            <a href="#">
+                <img src="img/footer-ad.jpg" /></a>
+        </div>
+        <div class="row copyright">
+            <a href="#">Copyright @2013</a>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="fileUpload">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Upload an Image</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" action="http://cmtws.customer.def6.com/fileupload" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputFile">File</label>
+                        <input type="file" name="upload">
+                        <p class="help-block">Please, only JPG, PNG or GIF only.</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">
+                            Legal blah blah blah
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Upload File</button>
+            </div>
+        </div>
+    </div>
+</div>

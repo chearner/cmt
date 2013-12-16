@@ -7,7 +7,7 @@ angular.module('cmtApp.services', ['ngResource']).
                 var api = $resource('http://cmtws.customer.def6.com/vote.aspx', {
                     IP: hostIp,
                     imageGUID: '7F19DADC-C33B-4297-9EF3-952C82EF75F4',
-                    voteID: voteIndex
+                    voteID: voteIndex + 1
                 }, {
                     get: {
                         method: 'GET',

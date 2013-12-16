@@ -20,9 +20,9 @@ angular.module('cmtApp.controllers', []).
 
         $scope.initVotes = function () {
             var votes = [
-                { 'name': 'Jesus', 'count': 0, 'percent': 0 },
-                { 'name': 'Duct Tape', 'count': 0, 'percent': 0 },
-                { 'name': 'Whiskey', 'count': 0, 'percent': 0 }
+                { 'name': 'Jesus', 'count': '0', 'percent': '0' },
+                { 'name': 'Duct Tape', 'count': '0', 'percent': '0' },
+                { 'name': 'Whiskey', 'count': '0', 'percent': '0' }
             ];
 
             return votes;
@@ -143,14 +143,15 @@ angular.module('cmtApp.controllers', []).
                     //$anchorScroll();
                 });
             } else {
-                alert('You already voted.');
+                //alert('You already voted.');
             }
         }
 
-        $scope.displayVotes = function (index) {
-            $scope.oFonts[index].class = 'f' + $scope.oVotes[index].percent.toString().split('')[2];
-            
-            return $scope.oVotes[index].count;
+        $scope.displayPercent = function (index) {
+            if ($scope.oVotes[index].percent != 0 && $scope.oVotes[index].percent != 'undefined') {
+                $scope.oFonts[index].class = 'f' + $scope.oVotes[index].percent.toString().split('',1);
+            }
+            return $scope.oVotes[index].percent;
         };
 
         $scope.shareVote = function () {
