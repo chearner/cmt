@@ -23,7 +23,7 @@
                         <div class="box blue" ng-click="voteFor(0)">
                             <div class="content">
                                 <div class="fade icon jesus" ng-hide="isVoted"></div>                              
-                                <div class="fade icon jesus-alt" ng-class="fonts[0].class" ng-hide="!isVoted">{{calcVotes(0)}}%</div>
+                                <div class="fade icon jesus-alt" ng-class="fonts[0].class" ng-hide="!isVoted">{{displayVotes(0)}}%</div>
                             </div>
                             Jesus
                         </div>
@@ -32,7 +32,7 @@
                         <div class="box red" ng-click="voteFor(1)">
                             <div class="content">
                                 <div class="fade icon tape" ng-hide="isVoted"></div>
-                                <div class="fade icon tape-alt" ng-class="fonts[1].class" ng-hide="!isVoted">{{calcVotes(1)}}%</div>
+                                <div class="fade icon tape-alt" ng-class="fonts[1].class" ng-hide="!isVoted">{{displayVotes(1)}}%</div>
                             </div>
                             Duct Tape
                         </div>
@@ -41,7 +41,7 @@
                         <div class="box yellow" ng-click="voteFor(2)">
                             <div class="content">
                                 <div class="fade icon whiskey" ng-hide="isVoted"></div>
-                                <div class="fade icon whiskey-alt" ng-class="fonts[2].class" ng-hide="!isVoted">{{calcVotes(2)}}%</div>
+                                <div class="fade icon whiskey-alt" ng-class="fonts[2].class" ng-hide="!isVoted">{{displayVotes(2)}}%</div>
                             </div>
                             Whiskey
                         </div>
@@ -59,7 +59,7 @@
                                 Got a photo you think we should add? <br class="visible-xs" /><a href onclick="$('#upload').click();">Send Us An Image</a><input id="upload" type="file" style="display: none;"/>
                             </div>
                         </div>
-                        <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="fade pointer" ng-click="doAgain()" />
+                        <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="fade pointer" ng-click="tryAgain()" />
                     </div>
                 </div>
             </div>

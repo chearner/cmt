@@ -4,6 +4,40 @@ angular.module('cmtApp.controllers', []).
     controller('homeController', ['$scope', 'dataServices', function ($scope, dataServices) {
         $scope.dataServices = dataServices;
 
+        $scope.initResults = function () {
+            var results = {
+                'TotalVotes': 0,
+                'JesusVotes': 0,
+                'TapeVotes': 0,
+                'WhiskeyVotes': 0,
+                'JesusPercent': 0,
+                'TapePercent': 0,
+                'WhiskeyPercent': 0
+            };
+
+            return results;
+        };
+
+        $scope.initVotes = function () {
+            var votes = [
+                { 'name': 'Jesus', 'count': 0, 'percent': 0 },
+                { 'name': 'Duct Tape', 'count': 0, 'percent': 0 },
+                { 'name': 'Whiskey', 'count': 0, 'percent': 0 }
+            ];
+
+            return votes;
+        };
+
+        $scope.initFonts = function () {
+            var fonts = [
+                { class: 'f0' },
+                { class: 'f0' },
+                { class: 'f0' }
+            ];
+
+            return fonts;
+        };
+
         init();
 
         function init() {
@@ -15,20 +49,12 @@ angular.module('cmtApp.controllers', []).
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
 
-            $scope.votes = [
-                { name: 'Jesus', count: '0' },
-                { name: 'Duct Tape', count: '0' },
-                { name: 'Whiskey', count: '0' }
-            ];
-
-            $scope.fonts = [
-                { class: 'f0' },
-                { class: 'f0' },
-                { class: 'f0' }
-            ];
+            $scope.oResults = $scope.initResults();
+            $scope.oVotes = $scope.initVotes();
+            $scope.oFonts = $scope.initFonts();
         };
 
-        $scope.doAgain = function () {
+        $scope.tryAgain = function () {
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
@@ -86,43 +112,45 @@ angular.module('cmtApp.controllers', []).
             }
         });
 
-        $scope.voteFor = function (index) {
-            dataServices.get(function (data) {
-                console.log(data.test);
+        $scope.getIP = function () {
+            var hostIP = '0.0.0.0';
+
+            $.getJSON('http://smart-ip.net/geoip-json', function (data) {
+                hostIP = data.host;
             });
 
+            return hostIP;
+        }
+
+        $scope.voteFor = function (index) {
+            $scope.voteIndex = index;
+            $scope.stampIndex = index;
+
             if (!$scope.isVoted) {
-                $scope.isVoted = !$scope.isVoted;
-                $scope.isShared = !$scope.isShared;
+                dataServices.getVotes($scope.getIP(), $scope.ui.pics[$scope.picIndex].id, $scope.voteIndex, function (data) {
+                    $scope.oResults = $.parseJSON(data);
 
-                $scope.voteIndex = index;
-                $scope.stampIndex = index;
+                    $scope.isVoted = !$scope.isVoted;
+                    $scope.isShared = !$scope.isShared;
 
-                $scope.votes = [
-                    { name: 'Jesus', count: '50' },
-                    { name: 'Duct Tape', count: '750' },
-                    { name: 'Whiskey', count: '200' }
-                ];
+                    $scope.oVotes = [
+                        { 'name': 'Jesus', 'count': $scope.oResults.JesusVotes, 'percent': $scope.oResults.JesusPercent },
+                        { 'name': 'Duct Tape', 'count': $scope.oResults.TapeVotes, 'percent': $scope.oResults.TapePercent },
+                        { 'name': 'Whiskey', 'count': $scope.oResults.WhiskeyVotes, 'percent': $scope.oResults.WhiskeyPercent }
+                    ];
 
-                //$location.hash('comment');
-                //$anchorScroll();
+                    //$location.hash('comment');
+                    //$anchorScroll();
+                });
             } else {
                 alert('You already voted.');
             }
         }
 
-        $scope.calcVotes = function (index) {
-            var total = 0;
-
-            for (var i = 0; i < $scope.votes.length; i++) {
-                total += parseInt($scope.votes[i].count);
-            }
-
-            var votes = Math.round($scope.votes[index].count) / total;
-
-            $scope.fonts[index].class = 'f' + votes.toString().split('')[2];
-
-            return votes * 100;
+        $scope.displayVotes = function (index) {
+            $scope.oFonts[index].class = 'f' + $scope.oVotes[index].percent.toString().split('')[2];
+            
+            return $scope.oVotes[index].count;
         };
 
         $scope.shareVote = function () {
@@ -130,7 +158,7 @@ angular.module('cmtApp.controllers', []).
                 $scope.isShared = !$scope.isShared;
                 $scope.isComplete = !$scope.isComplete;
 
-                alert('You just done shared yo shit, daddy.\n\n\comment: ' + $scope.txtComment + '\n\nid: ' + $scope.ui.pics[$scope.picIndex].id + '\n\nvote: ' + $scope.votes[$scope.voteIndex].name);
+                alert('You just done shared yo shit, daddy.\n\n\comment: ' + $scope.txtComment + '\n\nid: ' + $scope.ui.pics[$scope.picIndex].id + '\n\nvote: ' + $scope.oVotes[$scope.voteIndex].name);
             } else {
                 alert('You gotta vote first, dumbass.');
             }
