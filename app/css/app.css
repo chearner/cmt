@@ -574,6 +574,10 @@ div {
     width: 38px !important;
 }
 
+.fb-like {
+    z-index: 3;
+}
+
 @media (min-width: 768px) {
     body {
         background: url('../img/background-image-no-border.jpg') top no-repeat, #020000 !important;
