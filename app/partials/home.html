@@ -1,5 +1,5 @@
 <div class="row main">
-    <div class="col-md-6 center view">
+    <div class="col-md-6 center view" ng-hide="isMobile">
         <div class="row slider">
             <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
             <div class="frame" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
@@ -54,7 +54,7 @@
                     <textarea ng-model="txtComment"></textarea>
                     <br />
                     <span class="hash">#PartyDownSouth</span>
-                    <button ng-click="shareVote()">Share</button>
+                    <span class="fb-share-button float-right" data-href="http://jesusducttapeorwhiskey.com" ng-click="shareVote()"></span>
                     <div class="upload">
                         Got a photo you think we should add?
                         <br class="visible-xs" />

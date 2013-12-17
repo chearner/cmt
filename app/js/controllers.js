@@ -41,13 +41,17 @@ angular.module('cmtApp.controllers', []).
         init();
 
         function init() {
+            $scope.picIndex = 0;
+
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
-
-            $scope.picIndex = 0;
+            $scope.isMobile = false;
+            
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
+
+            $scope.txtComment = '';
 
             $scope.oResults = $scope.initResults();
             $scope.oVotes = $scope.initVotes();
@@ -55,15 +59,22 @@ angular.module('cmtApp.controllers', []).
         };
 
         $scope.tryAgain = function () {
+            $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
+
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
-
+            $scope.isMobile = false;
+                        
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
-
-            ++$scope.picIndex;
+            
             $scope.txtComment = '';
+            
+            if ($(window).width() < 768) {
+                $scope.isMobile = false;
+                $('.vote .comment').height(0);
+            };
         }
 
         $scope.stampSetIndex = function (index) {
@@ -88,9 +99,17 @@ angular.module('cmtApp.controllers', []).
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
+            $scope.isMobile = false;
 
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
+
+            $scope.txtComment = '';
+
+            if ($(window).width() < 768) {
+                $scope.isMobile = false;
+                $('.vote .comment').height(0);
+            };
         };
 
         $scope.nextPic = function () {
@@ -99,12 +118,20 @@ angular.module('cmtApp.controllers', []).
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
+            $scope.isMobile = false;
 
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
+
+            $scope.txtComment = '';
+
+            if ($(window).width() < 768) {
+                $scope.isMobile = false;
+                $('.vote .comment').height(0);
+            };
         };
 
-        $scope.$watch('picCount', function (count) {
+        $scope.$watch('picIndex', function (count) {
             if (count > 5) {
                 alert('count max');
                 $scope.picCount = 5;
@@ -125,10 +152,15 @@ angular.module('cmtApp.controllers', []).
         }
 
         $scope.voteFor = function (index) {
-            $scope.voteIndex = index;
-            $scope.stampIndex = index;
-
             if (!$scope.isVoted) {
+                $scope.voteIndex = index;
+                $scope.stampIndex = index;
+
+                if ($(window).width() < 768) {
+                    $scope.isMobile = !$scope.isMobile;
+                    $('.vote .comment').height(165);
+                };
+
                 dataServices.getVotes($scope.getIP(), $scope.ui.pics[$scope.picIndex].id, $scope.voteIndex, function (data) {
                     $scope.oResults = $.parseJSON(data);
 
