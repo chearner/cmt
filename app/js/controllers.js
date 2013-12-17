@@ -38,18 +38,152 @@ angular.module('cmtApp.controllers', []).
             return fonts;
         };
 
+        $scope.ui = {            
+            header: {
+                logo: {
+                    alt: 'Party Down South',
+                    url: 'img/header.png'
+                }
+            },
+            main: {
+                title: {
+                    alt: 'Jesus, Duct Tape or Whiskey',
+                    url: 'img/main-title.png'
+                }
+            },
+            form: {
+                done: {
+                    alt: 'Way to get\'r done!',
+                    url: 'img/done.png'
+                }
+            },
+            stamps: [
+                {
+                    alt: 'Jesus',
+                    url: 'img/stamp-jesus.png'
+                },
+                {
+                    alt: 'Duct Tape',
+                    url: 'img/stamp-tape.png'
+                },
+                {
+                    alt: 'Whiskey',
+                    url: 'img/stamp-whiskey.png'
+                }
+            ],
+            icons: {
+                jesus: {
+                    alt: 'Jesus',
+                    url: 'img/icon-jesus.png',
+                },
+                tape: {
+                    alt: 'Duct Tape',
+                    url: 'img/icon-tape.png'
+                },
+                whiskey: {
+                    alt: 'Whiskey',
+                    url: 'img/icon-whiskey.png'
+                }
+            },
+            cdn: {
+                url: 'http://images.partydownsouth.dev.def6.com'
+            },
+            pics: [
+                {
+                    guid: '18725E39-965C-4781-92FE-01C6CC9FB524'
+                },
+                {
+                    guid: '6DD83C39-6EAB-458B-A51E-10204C1F5D77'
+                },
+                {
+                    guid: '1D8231EB-3075-4D09-BA20-3CE07B60A20C'
+                },
+                {
+                    guid: '1069A879-7345-4587-BE96-6AD1B0F78C2A'
+                },
+                {
+                    guid: 'D4F38D6D-5D17-4879-A0A5-C391CF9EADA3'
+                },
+                {
+                    guid: '5BB7143C-4CBA-4A5E-A25A-3575C09E8C3D'
+                }
+            ],
+            memes: [
+                {
+                    quote: "You know what shuts guys up? Boobs!",
+                    url: "data/meme-000.jpg",
+                    cast: "Boobs"
+                },
+                {
+                    quote: "There's only 3 rules in the house...SHOT, SHOT, SHOT!",
+                    url: "data/meme-001.jpg",
+                    cast: "Shots"
+                },
+                {
+                    quote: "I'm like 300 pounds of twisted steel and sex appeal.",
+                    url: "data/meme-002.jpg",
+                    cast: "Murray"
+                },
+                {
+                    quote: "WHo's got my corndog all wet?",
+                    url: "data/meme-003.jpg",
+                    cast: "Taylor"
+                },
+                {
+                    quote: "I can be classy or trashy. Trashy is more funner.",
+                    url: "data/meme-004.jpg",
+                    cast: "Lauren"
+                },
+                {
+                    quote: "Alcohol goes in, the truth comes out.",
+                    url: "data/meme-005.jpg",
+                    cast: "Walt"
+                },
+                {
+                    quote: "Fun! WHOOO HOOOOO!",
+                    url: "data/meme-006.jpg",
+                    cast: "Lyle"
+                },
+                {
+                    quote: "Little bit of whiskey, feeling frisky.",
+                    url: "data/meme-007.jpg",
+                    cast: "Mattie"
+                },
+                {
+                    quote: "I will get stupid in a heartbeat.",
+                    url: "data/meme-008.jpg",
+                    cast: "Lauren"
+                },
+                {
+                    quote: "Duct tape and Jesus...the best things in the world.",
+                    url: "data/meme-009.jpg",
+                    cast: "Taylor"
+                },
+                {
+                    quote: "Down and dirty and really, really flirty.",
+                    url: "data/meme-010.jpg",
+                    cast: "Tiffany"
+                },
+                {
+                    quote: "Let's get this mutha going!",
+                    url: "data/meme-011.jpg",
+                    cast: "Daddy"
+                }
+            ]
+        };
+
         init();
 
         function init() {
             $scope.picIndex = 0;
+            $scope.memeIndex = 0;
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
 
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
             $scope.isMobile = false;
-            
-            $scope.stampIndex = -1;
-            $scope.voteIndex = -1;
 
             $scope.txtComment = '';
 
@@ -60,15 +194,15 @@ angular.module('cmtApp.controllers', []).
 
         $scope.tryAgain = function () {
             $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
+            $scope.memeIndex = ($scope.memeIndex < $scope.ui.memes.length - 1) ? ++$scope.memeIndex : 0;
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
 
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
-            $scope.isMobile = false;
+            $scope.isMobile = false;                       
                         
-            $scope.stampIndex = -1;
-            $scope.voteIndex = -1;
-            
             $scope.txtComment = '';
             
             if ($(window).width() < 768) {
@@ -77,7 +211,7 @@ angular.module('cmtApp.controllers', []).
             };
         }
 
-        $scope.stampSetIndex = function (index) {
+        $scope.setStampIndex = function (index) {
             $scope.stampIndex = index;
         };
 
@@ -85,7 +219,7 @@ angular.module('cmtApp.controllers', []).
             return $scope.stampIndex === index;
         };
 
-        $scope.picSetIndex = function (index) {
+        $scope.setPicIndex = function (index) {
             $scope.picIndex = index;
         };
 
@@ -93,16 +227,28 @@ angular.module('cmtApp.controllers', []).
             return $scope.picIndex === index;
         };
 
+        $scope.setMemeIndex = function (index) {
+            $scope.memeIndex = index;
+        };
+
+        $scope.isMemeIndex = function (index) {
+            if (index == $scope.memeIndex || index == $scope.memeIndex + 1 || index == $scope.memeIndex + 2) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         $scope.prevPic = function () {
             $scope.picIndex = ($scope.picIndex > 0) ? --$scope.picIndex : $scope.ui.pics.length - 1;
+            $scope.memeIndex = ($scope.memeIndex > 0) ? --$scope.memeIndex : $scope.ui.memes.length - 1;;
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
 
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
             $scope.isMobile = false;
-
-            $scope.stampIndex = -1;
-            $scope.voteIndex = -1;
 
             $scope.txtComment = '';
 
@@ -114,14 +260,14 @@ angular.module('cmtApp.controllers', []).
 
         $scope.nextPic = function () {
             $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
+            $scope.memeIndex = ($scope.memeIndex < $scope.ui.memes.length - 1) ? ++$scope.memeIndex : 0;
+            $scope.stampIndex = -1;
+            $scope.voteIndex = -1;
 
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
             $scope.isMobile = false;
-
-            $scope.stampIndex = -1;
-            $scope.voteIndex = -1;
 
             $scope.txtComment = '';
 
@@ -188,97 +334,25 @@ angular.module('cmtApp.controllers', []).
             return $scope.oVotes[index].percent;
         };
 
-        $scope.shareVote = function () {
+        $scope.shareFacebook = function () {
             if ($scope.isVoted) {
                 $scope.isShared = !$scope.isShared;
                 $scope.isComplete = !$scope.isComplete;
 
-                alert('Done.\n\n\comment: ' + $scope.txtComment + '\n\nid: ' + $scope.ui.pics[$scope.picIndex].id + '\n\nvote: ' + $scope.oVotes[$scope.voteIndex].name);
-            } else {
-                alert('Vote first.');
-            }
-        };
+                var width = 550,
+                height = 350,
+                left = ($(window).width() - width) / 2,
+                top = ($(window).height() - height) / 2,
+                url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('Party Down South') + '&p[summary]=' + encodeURIComponent('You can fix this with ' + $scope.oVotes[$scope.voteIndex].name + '. '+ $scope.txtComment) + '&p[url]=' + encodeURIComponent('http://partydownsouth.review.def6.com') + '&p[images][0]=' + encodeURIComponent('http://images.partydownsouth.dev.def6.com/' + $scope.ui.pics[$scope.picIndex].id + '.jpg'),
+                opts = 'status=1,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
 
-        $scope.ui = {
-            header: {
-                logo: {
-                    alt: 'Party Down South',
-                    url: 'img/header.png'
-                }
-            },
-            main: {
-                title: {
-                    alt: 'Jesus, Duct Tape or Whiskey',
-                    url: 'img/main-title.png'
-                }
-            },
-            form: {
-                done: {
-                    alt: 'Way to get\'r done!',
-                    url: 'img/done.png'
-                }
-            },
-            stamps: [
-                {
-                    alt: 'Jesus',
-                    url: 'img/stamp-jesus.png'
-                },
-                {
-                    alt: 'Duct Tape',
-                    url: 'img/stamp-tape.png'
-                },
-                {
-                    alt: 'Whiskey',
-                    url: 'img/stamp-whiskey.png'
-                }
-            ],
-            pics: [
-                {
-                    id: '18725E39-965C-4781-92FE-01C6CC9FB524',
-                    alt: '',
-                    url: 'data/pds-0001.jpg'
-                },
-                {
-                    id: '6DD83C39-6EAB-458B-A51E-10204C1F5D77',
-                    alt: '',
-                    url: 'data/pds-0002.jpg'
-                },
-                {
-                    id: '1D8231EB-3075-4D09-BA20-3CE07B60A20C',
-                    alt: '',
-                    url: 'data/pds-0003.jpg'
-                },
-                {
-                    id: '1069A879-7345-4587-BE96-6AD1B0F78C2A',
-                    alt: '',
-                    url: 'data/pds-0004.jpg'
-                },
-                {
-                    id: 'D4F38D6D-5D17-4879-A0A5-C391CF9EADA3',
-                    alt: '',
-                    url: 'data/pds-0005.jpg'
-                },
-                {
-                    id: '5BB7143C-4CBA-4A5E-A25A-3575C09E8C3D',
-                    alt: '',
-                    url: 'data/pds-0006.jpg'
-                }
-            ],
-            icons: {
-                jesus: {
-                    alt: 'Jesus',
-                    url: 'img/icon-jesus.png',
-                },
-                tape: {
-                    alt: 'Duct Tape',
-                    url: 'img/icon-tape.png'
-                },
-                whiskey: {
-                    alt: 'Whiskey',
-                    url: 'img/icon-whiskey.png'
-                }
+                window.open(url, 'facebook', opts);
+
+                return false;
+            } else {
+                alert('Please vote first.');
             }
-        }
+        };        
     }])
     .animation('.blend', function () {
         return {

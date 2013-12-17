@@ -42,6 +42,37 @@
         </div>
     </div>
     <div ng-view class="container"></div>    
+    <div class="modal fade" id="modalUpload">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Send us an image you think we should add to the gallery</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="formUpload" role="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="click" onclick="$('#selectUpload').click();">Click to Upload</div>
+                            <p class="center help-block">Must be a jpg, gif, or png file</p>
+                            <br />
+                            <input type="file" name="upload" id="selectUpload">                        
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" onclick="$('#submitUpload').toggleClass('disabled');">I Agree
+                            </label>
+                        </div>
+                        <p class="legal">
+                            I am the owner of the image, have all rights to it and accept CMT's related <a href="#">Terms & Conditions</a>.
+                        </p>
+                        <div class="center modal-footer">
+                            <button type="submit" class="btn btn-primary disabled" id="submitUpload">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>            
+            </div>
+        </div>
+    </div>
 
     <script src="lib/jquery-2.0.3.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
@@ -58,5 +89,19 @@
     <script src="js/social.js"></script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=fayded"></script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script>
+        $('#formUpload').submit(function () {
+            $.ajax({
+                type: 'POST',
+                url: 'http://cmtws.customer.def6.com/fileupload',
+                data: $('#formUpload').serialize(),
+                success: function (data) {
+                    $('.modal-body').html('Thank you for submitting your image');
+                    alert(data.uploaded);
+                }
+            });
+            return false;
+        });
+    </script>
 </body>
 </html>
