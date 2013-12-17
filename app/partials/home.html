@@ -58,10 +58,7 @@
                     <div class="upload">
                         Got a photo you think we should add?
                         <br class="visible-xs" />
-                        <a href data-toggle="modal" data-target="#fileUpload">Send Us An Image</a>
-                        <!--
-                        <a href onclick="$('#upload').click();">Send Us An Image</a><input id="upload" type="file" style="display: none;" />
-                        -->
+                        <a href data-toggle="modal" data-target="#modalUpload">Send Us An Image</a>                       
                     </div>
                 </div>
                 <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="blend pointer" ng-click="tryAgain()" />
@@ -134,31 +131,49 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="fileUpload">
+<div class="modal fade" id="modalUpload">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Upload an Image</h4>
+                <h4 class="modal-title">Send us an image you think we should add to the gallery</h4>
             </div>
             <div class="modal-body">
-                <form role="form" action="http://cmtws.customer.def6.com/fileupload" enctype="multipart/form-data" method="post">
+                <form id="formUpload" role="form" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="exampleInputFile">File</label>
-                        <input type="file" name="upload">
-                        <p class="help-block">Please, only JPG, PNG or GIF only.</p>
+                        <div class="click" onclick="$('#selectUpload').click();">Click to Upload</div>
+                        <p class="center help-block">Must be a jpg, gif, or png file</p>
+                        <br />
+                        <input type="file" name="upload" id="selectUpload">                        
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox">
-                            Legal blah blah blah
+                            <input type="checkbox" onclick="$('#submitUpload').toggleClass('disabled');">I Agree
                         </label>
                     </div>
+                    <p class="legal">
+                        I am the owner of the image, have all rights to it and accept CMT's related <a href="#">Terms & Conditions</a>.
+                    </p>
+                    <div class="center modal-footer">
+                        <button type="submit" class="btn btn-primary disabled" id="submitUpload">SUBMIT</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Upload File</button>
-            </div>
+            </div>            
         </div>
     </div>
 </div>
+<script>
+    $('#formUpload').submit(function () {
+        $.ajax({
+            type: 'POST',
+            url: 'http://cmtws.customer.def6.com/fileupload',
+            data: $('#formUpload').serialize(),
+            success: function (data) {
+                $('.modal-body').html('Thank you for submitting your image');
+                alert(data.uploaded);                
+            }
+        });
+
+        return false;
+    });
+</script>

@@ -84,6 +84,7 @@ angular.module('cmtApp.controllers', []).
 
         $scope.prevPic = function () {
             $scope.picIndex = ($scope.picIndex > 0) ? --$scope.picIndex : $scope.ui.pics.length - 1;
+
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
@@ -94,6 +95,7 @@ angular.module('cmtApp.controllers', []).
 
         $scope.nextPic = function () {
             $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
+
             $scope.isVoted = false;
             $scope.isShared = false;
             $scope.isComplete = false;
@@ -159,9 +161,9 @@ angular.module('cmtApp.controllers', []).
                 $scope.isShared = !$scope.isShared;
                 $scope.isComplete = !$scope.isComplete;
 
-                alert('You just done shared yo shit, daddy.\n\n\comment: ' + $scope.txtComment + '\n\nid: ' + $scope.ui.pics[$scope.picIndex].id + '\n\nvote: ' + $scope.oVotes[$scope.voteIndex].name);
+                alert('Done.\n\n\comment: ' + $scope.txtComment + '\n\nid: ' + $scope.ui.pics[$scope.picIndex].id + '\n\nvote: ' + $scope.oVotes[$scope.voteIndex].name);
             } else {
-                alert('You gotta vote first, dumbass.');
+                alert('Vote first.');
             }
         };
 
@@ -200,33 +202,33 @@ angular.module('cmtApp.controllers', []).
             ],
             pics: [
                 {
-                    id: 'aPyUE4E+JEdOaDAMF6CwzAQ',
-                    alt: 'Redneck 1',
+                    id: '18725E39-965C-4781-92FE-01C6CC9FB524',
+                    alt: '',
                     url: 'data/pds-0001.jpg'
                 },
                 {
-                    id: 'bPyUE4E+JEdOaDAMF6CwzAQ',
-                    alt: 'Redneck 2',
+                    id: '6DD83C39-6EAB-458B-A51E-10204C1F5D77',
+                    alt: '',
                     url: 'data/pds-0002.jpg'
                 },
                 {
-                    id: 'cPyUE4E+JEdOaDAMF6CwzAQ',
-                    alt: 'Redneck 3',
+                    id: '1D8231EB-3075-4D09-BA20-3CE07B60A20C',
+                    alt: '',
                     url: 'data/pds-0003.jpg'
                 },
                 {
-                    id: 'dPyUE4E+JEdOaDAMF6CwzAQ',
-                    alt: 'Redneck 4',
+                    id: '1069A879-7345-4587-BE96-6AD1B0F78C2A',
+                    alt: '',
                     url: 'data/pds-0004.jpg'
                 },
                 {
-                    id: 'ePyUE4E+JEdOaDAMF6CwzAQ',
-                    alt: 'Redneck 5',
+                    id: 'D4F38D6D-5D17-4879-A0A5-C391CF9EADA3',
+                    alt: '',
                     url: 'data/pds-0005.jpg'
                 },
                 {
-                    id: 'fPyUE4E+JEdOaDAMF6CwzAQ',
-                    alt: 'Redneck 6',
+                    id: '5BB7143C-4CBA-4A5E-A25A-3575C09E8C3D',
+                    alt: '',
                     url: 'data/pds-0006.jpg'
                 }
             ],
@@ -246,7 +248,7 @@ angular.module('cmtApp.controllers', []).
             }
         }
     }])
-    .animation('.fade', function () {
+    .animation('.blend', function () {
         return {
             beforeAddClass: function (element, className, done) {
                 if (className == 'ng-hide') {

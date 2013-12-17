@@ -175,6 +175,53 @@ div {
     color: #efb81d;
 }
 
+.modal {
+    font-size: 14px;
+}
+
+.modal .modal-content {
+    background: #ffffff url('../img/body-back.png') repeat;
+}
+
+.modal .btn-primary {
+    background-color: #dc1b76;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.modal .modal-title {
+    font-weight: bold;
+}
+
+.modal .modal-header {
+    border-bottom: none;
+}
+
+.modal .modal-footer {
+    border-top: none;
+}
+
+.modal .click {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    background: #eb6e1e;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.modal .legal {
+    font-size: 12px;
+}
+
+.modal .checkbox label {
+    font-size: 14px;
+    line-height: 1.4em;
+}
+
 .view {
     /* */
 }
