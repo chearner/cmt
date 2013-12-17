@@ -621,9 +621,14 @@ div {
     width: 38px !important;
 }
 
+.fb-like {
+    z-index: 3;
+}
+
 @media (min-width: 768px) {
     body {
-        background: url('../img/background-image-no-border.jpg') 0 129px no-repeat, #020000;
+        background: url('../img/background-image-no-border.jpg') top no-repeat, #020000 !important;
+        background-position-y: 129px !important;
     }
 
     .header {
@@ -668,7 +673,8 @@ div {
 
 @media (max-width: 450px) {
     body {
-        background: url('../img/background-450.jpg') top no-repeat, #020000;
+        background: url('../img/background-450.jpg') top no-repeat, #020000 !important;
+        background-position-y: 129px !important;
     }
 
     .header-box > img {
@@ -686,7 +692,8 @@ div {
 
 @media only screen and (min-width : 451px) and (max-width : 768px) {
     body {
-        background: url('../img/background-768.jpg') top no-repeat, #020000;
+        background: url('../img/background-768.jpg') top no-repeat, #020000 !important;
+        background-position-y: 129px !important;
     }    
 }
 
