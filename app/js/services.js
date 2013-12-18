@@ -3,7 +3,7 @@
 angular.module('cmtApp.services', ['ngResource']).
     factory('dataServices', function ($http, $resource, $log) {
         return {
-            getVotes: function (hostIp, imageId, voteIndex, callback) {
+            getVotes: function (hostIp, imageId, voteIndex, callback) {                
                 var api = $resource('http://cmtws.customer.def6.com/vote.aspx', {
                     IP: hostIp,
                     imageGUID: imageId,
@@ -19,7 +19,7 @@ angular.module('cmtApp.services', ['ngResource']).
                     }
                 });
 
-                api.get(function (response) {
+                api.get(function (response) {                    
                     callback(response.test);
                 });
             }

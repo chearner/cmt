@@ -3,7 +3,7 @@
         <div class="row slider">
             <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
             <div class="frame" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
-                <img ng-src="{{ui.cdn.url}}/{{pic.guid}}.jpg" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="pic blend" />
+                <img ng-src="{{ui.site.cdn}}{{pic.guid}}.jpg" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="pic blend" />
                 <img ng-src="{{stamp.url}}" alt="{{stamp.alt}}" ng-repeat="stamp in ui.stamps" ng-hide="!isStampIndex($index)" class="stamp shrink" />
             </div>
         </div>
@@ -54,7 +54,7 @@
                     <textarea ng-model="txtComment"></textarea>
                     <br />
                     <span class="hash">#PartyDownSouth</span>
-                    <img src="img/fb-share.png" class="float-right" ng-click="shareFacebook()" />
+                    <img src="img/fb-share.png" class="float-right" ng-click="shareVote()" />
                     <div class="upload">
                         Got a photo you think we should add?
                         <br class="visible-xs" />
@@ -71,10 +71,10 @@
     <div class="col-xs-12 col-md-4" ng-repeat="meme in ui.memes" ng-hide="!isMemeIndex($index)" class="blend">
         <div class="row">
             <div class="memes-col-left">
-                <img src="{{meme.url}}" alt="{{meme.quote}}" />
+                <img src="{{ui.site.cdn}}{{meme.url}}" alt="{{meme.quote}}" />
                 <ul>
-                    <li class="fb-share-button" data-href="http://jesusducttapeorwhiskey.com" data-type="button"></li>
-                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jesusducttapeorwhiskey.com" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
+                    <li><img src="img/fb-share.png" class="float-right" ng-click="shareMeme()" /></li>
+                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ui.site.url}}" data-count="none" data-hashtags="partydownsouth">Tweet</a></li>
                 </ul>
             </div>
             <div class="memes-col-right">

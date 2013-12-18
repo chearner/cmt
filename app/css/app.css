@@ -442,7 +442,7 @@ div {
     width: auto;
 }
 
-.memes-col-left img {
+.memes-col-left > img {
     border: 1px solid #000;
     max-width: 122px; 
     width: 100%;

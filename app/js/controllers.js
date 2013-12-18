@@ -85,8 +85,9 @@ angular.module('cmtApp.controllers', []).
                     url: 'img/icon-whiskey.png'
                 }
             },
-            cdn: {
-                url: 'http://images.partydownsouth.dev.def6.com'
+            site: {
+                url: 'http://partydownsouth.customer.def6.com/',
+                cdn: 'http://images-partydownsouth.customer.def6.com/'
             },
             pics: [
                 {
@@ -111,62 +112,62 @@ angular.module('cmtApp.controllers', []).
             memes: [
                 {
                     quote: "You know what shuts guys up? Boobs!",
-                    url: "data/meme-000.jpg",
+                    url: "meme-000.jpg",
                     cast: "Boobs"
                 },
                 {
                     quote: "There's only 3 rules in the house...SHOT, SHOT, SHOT!",
-                    url: "data/meme-001.jpg",
+                    url: "meme-001.jpg",
                     cast: "Shots"
                 },
                 {
                     quote: "I'm like 300 pounds of twisted steel and sex appeal.",
-                    url: "data/meme-002.jpg",
+                    url: "meme-002.jpg",
                     cast: "Murray"
                 },
                 {
                     quote: "WHo's got my corndog all wet?",
-                    url: "data/meme-003.jpg",
+                    url: "meme-003.jpg",
                     cast: "Taylor"
                 },
                 {
                     quote: "I can be classy or trashy. Trashy is more funner.",
-                    url: "data/meme-004.jpg",
+                    url: "meme-004.jpg",
                     cast: "Lauren"
                 },
                 {
                     quote: "Alcohol goes in, the truth comes out.",
-                    url: "data/meme-005.jpg",
+                    url: "meme-005.jpg",
                     cast: "Walt"
                 },
                 {
                     quote: "Fun! WHOOO HOOOOO!",
-                    url: "data/meme-006.jpg",
+                    url: "meme-006.jpg",
                     cast: "Lyle"
                 },
                 {
                     quote: "Little bit of whiskey, feeling frisky.",
-                    url: "data/meme-007.jpg",
+                    url: "meme-007.jpg",
                     cast: "Mattie"
                 },
                 {
                     quote: "I will get stupid in a heartbeat.",
-                    url: "data/meme-008.jpg",
+                    url: "meme-008.jpg",
                     cast: "Lauren"
                 },
                 {
                     quote: "Duct tape and Jesus...the best things in the world.",
-                    url: "data/meme-009.jpg",
+                    url: "meme-009.jpg",
                     cast: "Taylor"
                 },
                 {
                     quote: "Down and dirty and really, really flirty.",
-                    url: "data/meme-010.jpg",
+                    url: "meme-010.jpg",
                     cast: "Tiffany"
                 },
                 {
                     quote: "Let's get this mutha going!",
-                    url: "data/meme-011.jpg",
+                    url: "meme-011.jpg",
                     cast: "Daddy"
                 }
             ]
@@ -307,7 +308,7 @@ angular.module('cmtApp.controllers', []).
                     $('.vote .comment').height(165);
                 };
 
-                dataServices.getVotes($scope.getIP(), $scope.ui.pics[$scope.picIndex].id, $scope.voteIndex, function (data) {
+                dataServices.getVotes($scope.getIP(), $scope.ui.pics[$scope.picIndex].guid, $scope.voteIndex, function (data) {
                     $scope.oResults = $.parseJSON(data);
 
                     $scope.isVoted = !$scope.isVoted;
@@ -323,7 +324,7 @@ angular.module('cmtApp.controllers', []).
                     //$anchorScroll();
                 });
             } else {
-                //alert('You already voted.');
+                alert('You already voted.');
             }
         }
 
@@ -334,7 +335,7 @@ angular.module('cmtApp.controllers', []).
             return $scope.oVotes[index].percent;
         };
 
-        $scope.shareFacebook = function () {
+        $scope.shareVote = function () {
             if ($scope.isVoted) {
                 $scope.isShared = !$scope.isShared;
                 $scope.isComplete = !$scope.isComplete;
@@ -343,7 +344,7 @@ angular.module('cmtApp.controllers', []).
                 height = 350,
                 left = ($(window).width() - width) / 2,
                 top = ($(window).height() - height) / 2,
-                url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('Party Down South') + '&p[summary]=' + encodeURIComponent('You can fix this with ' + $scope.oVotes[$scope.voteIndex].name + '. '+ $scope.txtComment) + '&p[url]=' + encodeURIComponent('http://partydownsouth.review.def6.com') + '&p[images][0]=' + encodeURIComponent('http://images.partydownsouth.dev.def6.com/' + $scope.ui.pics[$scope.picIndex].id + '.jpg'),
+                url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('Party Down South') + '&p[summary]=' + encodeURIComponent('You can fix this with ' + $scope.oVotes[$scope.voteIndex].name + '. ' + $scope.txtComment) + '&p[url]=' + encodeURIComponent($scope.ui.site.url) + '&p[images][0]=' + encodeURIComponent($scope.ui.site.cdn + $scope.ui.pics[$scope.picIndex].guid + '.jpg'),
                 opts = 'status=1,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
 
                 window.open(url, 'facebook', opts);
@@ -352,7 +353,20 @@ angular.module('cmtApp.controllers', []).
             } else {
                 alert('Please vote first.');
             }
-        };        
+        };
+
+        $scope.shareMeme = function () {
+            var width = 550,
+            height = 350,
+            left = ($(window).width() - width) / 2,
+            top = ($(window).height() - height) / 2,
+            url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('Party Down South') + '&p[summary]=' + encodeURIComponent($scope.ui.memes[$scope.memeIndex].quote) + '&p[url]=' + encodeURIComponent($scope.ui.site.url) + '&p[images][0]=' + encodeURIComponent($scope.ui.site.cdn + $scope.ui.memes[$scope.memeIndex].url),
+            opts = 'status=1,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
+
+            window.open(url, 'facebook', opts);
+
+            return false;
+        };
     }])
     .animation('.blend', function () {
         return {
