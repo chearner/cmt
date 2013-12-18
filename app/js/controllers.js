@@ -363,11 +363,10 @@ angular.module('cmtApp.controllers', []).
             height = 350,
             left = ($(window).width() - width) / 2,
             top = ($(window).height() - height) / 2,
-            url = 'https://twitter.com/share?text=' + encodeURIComponent($scope.ui.memes[$scope.memeIndex].quote) + '&p[url]=' + encodeURIComponent($scope.ui.site.url)+ '&p[url]=' + encodeURIComponent($scope.ui.site.url),
+            url = 'https://twitter.com/share?text=' + encodeURIComponent($scope.ui.memes[$scope.memeIndex].quote) + ' %23partydownsouth ' + encodeURIComponent($scope.ui.site.url),
             opts = 'status=1,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
 
             window.open(url, 'twitter', opts);
-
             return false;
         };
     }])
