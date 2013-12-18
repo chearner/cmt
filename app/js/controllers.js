@@ -288,16 +288,6 @@ angular.module('cmtApp.controllers', []).
             }
         });
 
-        $scope.getIP = function () {
-            var hostIP = '0.0.0.0';
-
-            $.getJSON('http://smart-ip.net/geoip-json', function (data) {
-                hostIP = data.host;
-            });
-
-            return hostIP;
-        }
-
         $scope.voteFor = function (index) {
             if (!$scope.isVoted) {
                 $scope.voteIndex = index;
@@ -308,8 +298,8 @@ angular.module('cmtApp.controllers', []).
                     $('.vote .comment').height(165);
                 };
 
-                dataServices.getVotes($scope.getIP(), $scope.ui.pics[$scope.picIndex].guid, $scope.voteIndex, function (data) {
-                    $scope.oResults = $.parseJSON(data);
+                dataServices.getVotes(myIP, $scope.ui.pics[$scope.picIndex].guid, $scope.voteIndex, function (data) {
+                    $scope.oResults = data;
 
                     $scope.isVoted = !$scope.isVoted;
                     $scope.isShared = !$scope.isShared;
