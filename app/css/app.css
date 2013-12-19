@@ -442,7 +442,7 @@ div {
     width: auto;
 }
 
-.memes-col-left > img {
+.memes-col-left img {
     border: 1px solid #000;
     max-width: 122px; 
     width: 100%;
@@ -529,10 +529,13 @@ div {
     margin: 10px 0 16px;
 }
 
-.footer .copyright a {
+.footer .copyright {
     display: block;
-    font-size: 10px;
     margin-top: 20px;
+}
+
+.footer .copyright a {
+    font-size: 10px;
     text-transform: none;
     font-weight: normal;
 }

@@ -9,7 +9,8 @@
     <meta property="og:title" content="Party Down South">
     <meta property="og:site_name" content="Party Down South">
     <meta property="og:url" content="partydownsouth.com">
-    <meta property="og:description" content="Description of Party Down South goes here. Description of Party Down South goes here. Description of Party Down South goes here.">
+    <meta property="og:description" content="From the producers of Jersey Shore comes the most outrageous Southern party you've ever seen. Eight Southerners enjoy a wild summer in South Carolina, only on CMT.">
+    <meta property="og:image" content="img/logo-psd.png" />
     <meta property="og:type" content="TV Show" />
     <meta property="fb:locale" content="en_US">
     <meta property="fb:app_id" content="235965576565291">
@@ -94,17 +95,24 @@
             myIP = o.host;
         }
 
+        var modalHTML = '';
+
         $('#formUpload').submit(function () {
             $.ajax({
                 type: 'POST',
                 url: 'http://cmtws.customer.def6.com/fileupload',
                 data: $('#formUpload').serialize(),
                 success: function (data) {
+                    modalHTML = $('.modal-body').html();
                     $('.modal-body').html('Thank you for submitting your image');
-                    alert(data.uploaded);
+                    console.log($.parseJSON(data));
                 }
             });
             return false;
+        });
+
+        $('.modal .close').click(function () {
+            $('.modal-body').html(modalHTML);
         });
     </script>
     <script src="https://smart-ip.net/geoip-json?callback=getIP"></script>

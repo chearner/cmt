@@ -126,7 +126,7 @@ angular.module('cmtApp.controllers', []).
                     cast: "Murray"
                 },
                 {
-                    quote: "WHo's got my corndog all wet?",
+                    quote: "Who's got my corndog all wet?",
                     url: "meme-003.jpg",
                     cast: "Taylor"
                 },
