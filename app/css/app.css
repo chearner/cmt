@@ -585,18 +585,21 @@ div {
 #social {
     position: relative;
     top: 0;
+    overflow: hidden;
     text-align: center;
 }
 
 #social a, #social div {
-    display: inline-block;
+    display: inline-block !important;
+    vertical-align: top
+    float: none;
     margin: 0 2px;
 }
 
-    #social + img {
-        width: 100%;
-        padding: 8px 0;
-    }
+#social + img {
+    width: 100%;
+    padding: 8px 0;
+}
 
 .header-watch {
     color: #FFF;
@@ -667,9 +670,15 @@ div {
         right: 20px;
     }
 
-        #social + img {
-            width: auto;
-        }
+    #social + img {
+        width: auto;
+    }
+
+    #social a, #social div {
+        display: block;
+        float: left;
+        margin: 0 2px;
+    }
 
     .header #social {
         background: none;
