@@ -471,6 +471,8 @@ div {
         .memes-col-left li img {
             vertical-align: top;
             width: auto;
+            border: none;
+            cursor: pointer;
         }
 
         .memes-col-left li:first-child {
