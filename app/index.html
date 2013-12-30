@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">    
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta property="og:title" content="Party Down South">
     <meta property="og:site_name" content="Party Down South">
-    <meta property="og:url" content="partydownsouth.com">
-    <meta property="og:description" content="From the producers of Jersey Shore comes the most outrageous Southern party you've ever seen. Eight Southerners enjoy a wild summer in South Carolina, only on CMT.">
-    <meta property="og:image" content="img/logo-psd.png" />
+    <meta property="og:url" content="http://partydownsouth.customer.def6.com">
+    <meta property="og:description" content="Jesus, duct tape or whiskey? Vote for how you'd fix crazy situations from the show and check out hilarious quotes. Party Down South premieres Thursday, January 16 at 10/9c, only on CMT!">
+    <meta property="og:image" content="http://partydownsouth.customer.def6.com/img/logo-pds.jpg" />
     <meta property="og:type" content="TV Show" />
-    <meta property="fb:locale" content="en_US">
+    <meta property="og:locale" content="en_US">
     <meta property="fb:app_id" content="235965576565291">
-    <title>Party Down South - Jesus, Ducktape or Whiskey?</title>
+    <title>Jesus, Duct Tape or Whiskey?</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <!--[if gte IE 9]>
@@ -32,12 +31,12 @@
             <div class="col-lg-12 header-box">
                 <div class="row">
                     <div id="social">
-                        <div class="fb-like" data-href="{{ui.site.url}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                        <a class="addthis_counter addthis_pill_style"></a>
-                        <a href="" class="header-watch">Watch Trailer</a>
+                        <div class="fb-like" data-href="https://www.facebook.com/PartyDownSouth" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                        <div class="addthis_counter addthis_pill_style"></div>
+                        <a href="http://www.youtube.com/watch?v=godd9nEBVGY" target="_blank" class="header-watch">Watch Trailer</a>
                     </div>
                 </div>
-                <a href="/"><img src="img/header.png" alt="Pary Down South" /></a>
+                <a href="/"><img src="img/header.png" alt="Pary Down South" class="logo" /></a>
             </div>
         </div>
     </div>
@@ -47,33 +46,32 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Send us an image you think we should add to the gallery</h4>
+                    <h4 class="modal-title">Send us an image you think we should add to the gallery!</h4>
                 </div>
                 <div class="modal-body">
                     <form id="formUpload" role="form" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="click" onclick="$('#selectUpload').click();">Click to Upload</div>
-                            <p class="center help-block">Must be a jpg, gif, or png file</p>
+                            <p class="center help-block">Must be a JPG, GIF, or PNG file and filesize less than 4MB.</p>
                             <br />
                             <input type="file" name="upload" id="selectUpload">                        
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" onclick="$('#submitUpload').toggleClass('disabled');">I Agree
+                                <input type="checkbox" id="formAgree">I Agree
                             </label>
                         </div>
                         <p class="legal">
                             I am the owner of the image, have all rights to it and accept CMT's related <a href="http://www.cmt.com/interact/terms/" target="_blank">Terms & Conditions</a>.
                         </p>
                         <div class="center modal-footer">
-                            <button type="submit" class="btn btn-primary disabled" id="submitUpload">SUBMIT</button>
+                            <button type="submit" class="btn btn-primary disabled" id="formSubmit">SUBMIT</button>
                         </div>
-                    </form>
-                </div>            
+                    </form>                    
+                </div>      
             </div>
         </div>
     </div>
-
     <script src="lib/jquery-2.0.3.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
@@ -90,29 +88,60 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=fayded"></script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <script>
+        var name = '';
+        var isAgree = false;
+        
+        var userAgent = navigator.userAgent.toLowerCase();
+        if (/msie/.test(userAgent) &&
+            parseFloat((userAgent.match(/.*(?:rv|ie)[\/: ](.+?)([ \);]|$)/) || [])[1]) < 9) {
+            alert('This site is optimized for all modern browsers. Please upgrade your browser and try again.');
+        }
+
         var myIP;
         function getIP(o) {
             myIP = o.host;
         }
+        
+        $(document).on("click", "#formOpen", function () {
+            $('.modal-title').html('Send us an image you think we should add to the gallery!');
+            $('#selectUpload').val(null);
+            $('#formAgree').prop('checked', false);
+            $('#formSubmit').addClass('disabled');            
+            $('.modal-body').show();
+            name = '';
+            isAgree = false;
+        });
 
-        //var modalHTML = '';
+        $(document).on("click", "#formSubmit", function () {
+            $('.modal-title').html('Thank you. Your file has been submitted.');
+            $('.modal-body').hide();
+        });
+                
+        $(document).on("click", "#formAgree", function () {
+            isAgree = !isAgree;
+            isFormReady();
+        });
+        
+        function isFormReady() {
+            if (name.length > 1 && isAgree) {
+                $('#formSubmit').removeClass('disabled');
+            } else {
+                $('#formSubmit').addClass('disabled');
+            }
+        }
 
         $(':file').change(function () {
             var file = this.files[0];
             name = file.name;
-            size = file.size;
-            type = file.type;
 
             if (file.name.length < 1) {
-
-            }
-            else if (file.size > 100000) {
-                alert("File is to big");
-            }
-            else if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg') {
-                alert("File doesnt match png, jpg or gif");
-            }
-            else {
+                alert("No file.");
+            } else if (file.size > 4000000) {
+                alert("File is too big.");
+            } else if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg') {
+                alert("File doesnt match png, jpg or gif.");
+            } else {
+                isFormReady();
                 $(':submit').click(function () {
                     var formData = new FormData($('#formUpload')[0]);
                     $.ajax({
@@ -123,7 +152,7 @@
                             return myXhr;
                         },
                         success: completeHandler = function (data) {
-                            console.log(data);
+                            //
                         },
                         error: errorHandler = function () {
                             alert("file upload error");
@@ -135,11 +164,7 @@
                     }, 'json');
                 });
             }
-        });
-
-        $('.modal .close').click(function () {
-            //$('.modal-body').html(modalHTML);
-        });
+        });        
     </script>
     <script src="https://smart-ip.net/geoip-json?callback=getIP"></script>
 </body>

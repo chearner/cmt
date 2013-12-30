@@ -2,20 +2,20 @@
     <div class="col-md-6 center view" ng-hide="isMobile">
         <div class="row slider">
             <img ng-src="{{ui.main.title.url}}" alt="{{ui.main.title.alt}}" class="title" />
-            <div class="frame" ng-swipe-left="prevPic()" ng-swipe-right="nextPic()">
+            <div class="frame" ng-swipe-left="nextPic()" ng-swipe-right="prevPic()">
                 <img ng-src="{{ui.site.cdn}}{{pic.guid}}.jpg" ng-repeat="pic in ui.pics" ng-hide="!isPicIndex($index)" class="pic blend" />
                 <img ng-src="{{stamp.url}}" alt="{{stamp.alt}}" ng-repeat="stamp in ui.stamps" ng-hide="!isStampIndex($index)" class="stamp shrink" />
             </div>
         </div>
         <div class="row controls">
-            <a href ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href ng-click="nextPic()">Next</a>
+            <a href="" ng-click="prevPic()">Back</a> <strong>{{picIndex + 1}}</strong> of {{ui.pics.length}} <a href="" ng-click="nextPic()">Next</a>
         </div>
     </div>
     <div class="col-md-6 vote">
         <div class="row title">
             <div class="col-xs-12">
-                <h4 class="blend" ng-hide="isVoted">Vote for how you'd fix this?</h4>
-                <h4 class="blend" ng-hide="!isVoted">Thanks for givin'a fix. Check out the stats:</h4>
+                <h4 class="blend a" ng-hide="isVoted">Vote for how you'd fix this:</h4>
+                <h4 class="blend b" ng-hide="!isVoted">Thanks for givin' a fix. Check out the stats:</h4>
             </div>
         </div>
         <div class="row boxes">
@@ -23,7 +23,7 @@
                 <div class="box blue" ng-click="voteFor(0)">
                     <div class="content">
                         <div class="blend icon jesus" ng-hide="isVoted"></div>
-                        <div class="blend icon jesus-alt" ng-class="oFonts[0].class" ng-hide="!isVoted">{{displayPercent(0)}}%</div>
+                        <div class="blend icon jesus-alt" ng-class="oFonts[0].class" ng-hide="!isVoted">{{displayPercent(0)}}</div>
                     </div>
                     Jesus
                 </div>
@@ -32,7 +32,7 @@
                 <div class="box red" ng-click="voteFor(1)">
                     <div class="content">
                         <div class="blend icon tape" ng-hide="isVoted"></div>
-                        <div class="blend icon tape-alt" ng-class="oFonts[1].class" ng-hide="!isVoted">{{displayPercent(1)}}%</div>
+                        <div class="blend icon tape-alt" ng-class="oFonts[1].class" ng-hide="!isVoted">{{displayPercent(1)}}</div>
                     </div>
                     Duct Tape
                 </div>
@@ -41,7 +41,7 @@
                 <div class="box yellow" ng-click="voteFor(2)">
                     <div class="content">
                         <div class="blend icon whiskey" ng-hide="isVoted"></div>
-                        <div class="blend icon whiskey-alt" ng-class="oFonts[2].class" ng-hide="!isVoted">{{displayPercent(2)}}%</div>
+                        <div class="blend icon whiskey-alt" ng-class="oFonts[2].class" ng-hide="!isVoted">{{displayPercent(2)}}</div>
                     </div>
                     Whiskey
                 </div>
@@ -49,32 +49,40 @@
         </div>
         <div class="row comment" id="comment">
             <div class="col-xs-12 center">
-                <div ng-hide="!isShared" class="form blend">
-                    <strong>Oh yea? Tell us why:</strong>
+                <div ng-hide="!isShared" class="form">
+                    <strong>Oh yeah? Tell us why:</strong>
                     <textarea ng-model="txtComment"></textarea>
                     <br />
                     <span class="hash">#PartyDownSouth</span>
-                    <img src="img/fb-share.png" class="float-right" ng-click="shareVote()" />
-                    <div class="upload">
-                        Got a photo you think we should add?
-                        <br class="visible-xs" />
-                        <a href data-toggle="modal" data-target="#modalUpload">Send Us An Image</a>                       
+                    <img src="img/fb-share.png" class="float-right pointer" ng-click="shareVote()" />
+                    <div class="center visible-xs back">
+                        <a href="" ng-click="tryAgain(0)">Back to Image</a>
                     </div>
                 </div>
-                <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="blend pointer" ng-click="tryAgain()" />
+                <img ng-src="{{ui.form.done.url}}" alt="{{ui.form.done.alt}}" ng-hide="!isComplete" class="pointer" ng-click="tryAgain(1)" />
+                <div class="center back" ng-hide="!isComplete">
+                    <a href="" ng-click="tryAgain(1)">View Next Image</a>
+                </div>
+                <div class="upload">
+                    Got a photo you think we should add?
+                    <br class="visible-xs" />
+                    <a href="" data-toggle="modal" data-target="#modalUpload" id="formOpen">Send Us An Image</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div class="row memes">
     <p class="memes-intro"><i>Y'all Only Live Once!</i> Words of wisdom from the Party Down South house:</p>
-    <div class="col-xs-12 col-md-4" ng-repeat="meme in ui.memes" ng-hide="!isMemeIndex($index)" class="blend">
+    <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="meme in ui.memes" ng-hide="!isMemeIndex($index)" class="blend">
         <div class="row">
             <div class="memes-col-left">
                 <img src="{{ui.site.cdn}}{{meme.url}}" alt="{{meme.quote}}" />
                 <ul>
-                    <li><img src="img/fb-share.png" class="float-right" ng-click="shareMeme()" /></li>
-                    <li><img src="img/twitter.png" class="float-right" ng-click="shareTwitter()" /></li>
+                    <li>
+                        <img src="img/fb-share.png" class="float-left" ng-click="shareFacebook($index)" /></li>
+                    <li>
+                        <img src="img/twitter.png" class="float-left" ng-click="shareTwitter($index)" /></li>
                 </ul>
             </div>
             <div class="memes-col-right">
@@ -82,12 +90,15 @@
                 <p>{{meme.quote}}</p>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 <div class="row footer">
     <div class="col-xs-12">
-        <div class="row">
+        <div class="row hidden-xs">
             <a href="http://www.cmt.com/show/party-down-south/series.jhtml" target="_blank">About the Show</a>|<a href="http://www.cmt.com/shows/schedule/" target="_blank">Channel Finder</a>
+        </div>
+        <div class="row visible-xs">
+            <a href="http://www.cmt.com/show/party-down-south/series.jhtml" target="_blank">About the Show</a>|<a href="http://www.cmt.com/sitewide/includes/widgets/channel-finder/cf_widget_iframe.jhtml" target="_blank">Channel Finder</a>
         </div>
         <div class="row secondary-footer">
             <a href="http://www.cmt.com/interact/terms/" target="_blank">Terms &amp; Conditions</a>|<a href="http://www.cmt.com/interact/terms/privacy.jhtml" target="_blank">Privacy Policy</a>
