@@ -5,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta property="og:title" content="Party Down South">
     <meta property="og:site_name" content="Party Down South">
-    <meta property="og:url" content="http://partydownsouth.customer.def6.com">
+    <meta property="og:url" content="http://www.cmtpartydownsouth.com">
     <meta property="og:description" content="Jesus, duct tape or whiskey? Vote for how you'd fix crazy situations from the show and check out hilarious quotes. Party Down South premieres Thursday, January 16 at 10/9c, only on CMT!">
-    <meta property="og:image" content="http://partydownsouth.customer.def6.com/img/logo-pds.jpg" />
+    <meta property="og:image" content="http://www.cmtpartydownsouth.com/img/logo-pds.jpg" />
     <meta property="og:type" content="TV Show" />
     <meta property="og:locale" content="en_US">
-    <meta property="fb:app_id" content="235965576565291">
+    <meta property="fb:app_id" content="627930867271591">
     <title>Jesus, Duct Tape or Whiskey?</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
@@ -40,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div ng-view class="container"></div>    
+    <div ng-view class="container"></div>
     <div class="modal fade" id="modalUpload">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -145,7 +146,7 @@
                 $(':submit').click(function () {
                     var formData = new FormData($('#formUpload')[0]);
                     $.ajax({
-                        url: 'http://cmtws.customer.def6.com/fileupload',
+                        url: 'http://ws.cmtpartydownsouth.com/fileupload',
                         type: 'POST',
                         xhr: function () {  
                             myXhr = $.ajaxSettings.xhr();

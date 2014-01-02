@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('cmtApp.controllers', []).
-    controller('voteController', ['$scope', '$location', '$routeParams', 'dataServices', function ($scope, $location, $routeParams, dataServices) {
+    controller('voteController', ['$scope', '$location', '$routeParams', 'dataServices', 'picServices', 'memeServices', function ($scope, $location, $routeParams, dataServices, picServices, memeServices) {
         $scope.dataServices = dataServices;
+        $scope.picServices = picServices;
+        $scope.memeServices = memeServices;
 
         $scope.initResults = function () {
             var results = {
@@ -86,8 +88,8 @@ angular.module('cmtApp.controllers', []).
                 }
             },
             site: {
-                url: 'http://partydownsouth.customer.def6.com/',
-                cdn: 'http://images-partydownsouth.customer.def6.com/'
+                url: 'http://www.cmtpartydownsouth.com/',
+                cdn: 'http://images.cmtpartydownsouth.com/'
             },
             pics: [
                 {
@@ -235,17 +237,14 @@ angular.module('cmtApp.controllers', []).
         init();
 
         function init() {
-            $scope.picIndex = 0;
-
             if ($routeParams.voteId != null) {
                 $.map($scope.ui.pics, function (value, key) {
                     if ($routeParams.voteId == value.guid) {
-                        $scope.picIndex = key;
+                        $scope.picServices.picIndex = key;
                     }
                 });
             }
             
-            $scope.memeIndex = 0;
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
 
@@ -261,14 +260,14 @@ angular.module('cmtApp.controllers', []).
             $scope.oFonts = $scope.initFonts();
         };
 
-        $scope.$watch('picIndex', function (value) {
+        $scope.$watch('picServices.picIndex', function (value) {
             $location.path('vote/' + $scope.ui.pics[value].guid);
         }, true);
 
         $scope.tryAgain = function (next) {
             if (next > 0) {
-                $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
-                $scope.memeIndex = ($scope.memeIndex < $scope.ui.memes.length - 3) ? ++$scope.memeIndex : 0;
+                $scope.picServices.picIndex = ($scope.picServices.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picServices.picIndex : 0;
+                $scope.memeServices.memeIndex = ($scope.memeServices.memeIndex < $scope.ui.memes.length - 3) ? ++$scope.memeServices.memeIndex : 0;
             }
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
@@ -295,19 +294,19 @@ angular.module('cmtApp.controllers', []).
         };
 
         $scope.setPicIndex = function (index) {
-            $scope.picIndex = index;
+            $scope.picServices.picIndex = index;
         };
 
         $scope.isPicIndex = function (index) {
-            return $scope.picIndex === index;
+            return $scope.picServices.picIndex === index;
         };
 
         $scope.setMemeIndex = function (index) {
-            $scope.memeIndex = index;
+            $scope.memeServices.memeIndex = index;
         };
 
         $scope.isMemeIndex = function (index) {
-            if (index === $scope.memeIndex || index === $scope.memeIndex + 1 || index === $scope.memeIndex + 2) {
+            if (index === $scope.memeServices.memeIndex || index === $scope.memeServices.memeIndex + 1 || index === $scope.memeServices.memeIndex + 2) {
                 return true;
             } else {
                 return false;
@@ -315,8 +314,8 @@ angular.module('cmtApp.controllers', []).
         };
 
         $scope.prevPic = function () {
-            $scope.picIndex = ($scope.picIndex > 0) ? --$scope.picIndex : $scope.ui.pics.length - 1;
-            $scope.memeIndex = ($scope.memeIndex > 0) ? --$scope.memeIndex : $scope.ui.memes.length - 3;
+            $scope.picServices.picIndex = ($scope.picServices.picIndex > 0) ? --$scope.picServices.picIndex : $scope.ui.pics.length - 1;
+            $scope.memeServices.memeIndex = ($scope.memeServices.memeIndex > 0) ? --$scope.memeServices.memeIndex : $scope.ui.memes.length - 3;
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
 
@@ -334,8 +333,8 @@ angular.module('cmtApp.controllers', []).
         };
 
         $scope.nextPic = function () {
-            $scope.picIndex = ($scope.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picIndex : 0;
-            $scope.memeIndex = ($scope.memeIndex < $scope.ui.memes.length - 3) ? ++$scope.memeIndex : 0;
+            $scope.picServices.picIndex = ($scope.picServices.picIndex < $scope.ui.pics.length - 1) ? ++$scope.picServices.picIndex : 0;
+            $scope.memeServices.memeIndex = ($scope.memeServices.memeIndex < $scope.ui.memes.length - 3) ? ++$scope.memeServices.memeIndex : 0;
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
 
@@ -367,7 +366,7 @@ angular.module('cmtApp.controllers', []).
                 $scope.isShared = true;
                 $scope.isComplete = false;
 
-                dataServices.getVotes(myIP, $scope.ui.pics[$scope.picIndex].guid, $scope.voteIndex, function (data) {
+                dataServices.getVotes(myIP, $scope.ui.pics[$scope.picServices.picIndex].guid, $scope.voteIndex, function (data) {
                     $scope.oResults = data;
 
                     $scope.oVotes = [
@@ -410,7 +409,7 @@ angular.module('cmtApp.controllers', []).
                 var height = 350;
                 var left = ($(window).width() / 2) - (width / 2);
                 var top = ($(window).height() / 2) - (height / 2);
-                var url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('#PartyDownSouth Jan 16 on CMT!') + '&p[summary]=' + encodeURIComponent("I'd fix this with " + $scope.oVotes[$scope.voteIndex].name + '. ' + $scope.txtComment + ' Click here to see more crazy photos and vote! Party Down South premieres Thursday, January 16 at 10/9c, only on CMT.') + '&p[url]=' + encodeURIComponent(window.location.href) + '&p[images][0]=' + encodeURIComponent($scope.ui.site.cdn + $scope.ui.pics[$scope.picIndex].guid + '.jpg');
+                var url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('#PartyDownSouth Jan 16 on CMT!') + '&p[summary]=' + encodeURIComponent("I'd fix this with " + $scope.oVotes[$scope.voteIndex].name + '. ' + $scope.txtComment + ' Click here to see more crazy photos and vote! Party Down South premieres Thursday, January 16 at 10/9c, only on CMT.') + '&p[url]=' + encodeURIComponent(window.location.href) + '&p[images][0]=' + encodeURIComponent($scope.ui.site.cdn + $scope.ui.pics[$scope.picServices.picIndex].guid + '.jpg');
                 var opts = 'status=1,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
 
                 window.open(url, 'facebook', opts);

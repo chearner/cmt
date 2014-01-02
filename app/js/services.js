@@ -18,4 +18,14 @@ angular.module('cmtApp.services', ['ngResource']).
             }
         };
     }).
+    factory('picServices', function () {
+        return {
+            picIndex: 0
+        };
+    }).
+    factory('memeServices', function () {
+        return {
+            memeIndex: 0
+        };
+    }).
     value('version', '1.0');
