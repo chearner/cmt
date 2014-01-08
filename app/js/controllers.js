@@ -244,7 +244,7 @@ angular.module('cmtApp.controllers', []).
                     }
                 });
             }
-            
+
             $scope.stampIndex = -1;
             $scope.voteIndex = -1;
 
@@ -398,37 +398,31 @@ angular.module('cmtApp.controllers', []).
 
         $scope.shareVote = function () {
             if ($scope.isVoted) {
-                if ($(window).width() < 768) {
-                    $('.vote .comment').height(275);
-                };
+                var isLoggedIn = fbLogin();
 
-                $scope.isShared = false;
-                $scope.isComplete = true;
-                
-                var width = 550;
-                var height = 350;
-                var left = ($(window).width() / 2) - (width / 2);
-                var top = ($(window).height() / 2) - (height / 2);
-                var url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('#PartyDownSouth Jan 16 on CMT!') + '&p[summary]=' + encodeURIComponent("I'd fix this with " + $scope.oVotes[$scope.voteIndex].name + '. ' + $scope.txtComment + ' Click here to see more crazy photos and vote! Party Down South premieres Thursday, January 16 at 10/9c, only on CMT.') + '&p[url]=' + encodeURIComponent(window.location.href) + '&p[images][0]=' + encodeURIComponent($scope.ui.site.cdn + $scope.ui.pics[$scope.picServices.picIndex].guid + '.jpg');
-                var opts = 'status=1,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
+                if (isLoggedIn) {
+                    if ($(window).width() < 768) {
+                        $('.vote .comment').height(275);
+                    };
 
-                window.open(url, 'facebook', opts);
-                return false;
+                    fbPost("#PartyDownSouth Jan 16 on CMT!", "I'd fix this with " + $scope.oVotes[$scope.voteIndex].name + '. ' + $scope.txtComment, "Click here to see more crazy photos and vote! Party Down South premieres Thursday, January 16 at 10/9c, only on CMT.", $scope.ui.site.cdn + $scope.ui.pics[$scope.picServices.picIndex].guid + '.jpg');
+
+                    $scope.isShared = false;
+                    $scope.isComplete = true;
+                }                    
             } else {
                 alert('Please vote first.');
             }
         };
 
         $scope.shareFacebook = function (index) {
-            var width = 550;
-            var height = 350;
-            var left = ($(window).width()/2) - (width/2);
-            var top = ($(window).height()/2) - (height/2);
-            var url = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('#PartyDownSouth Jan 16 on CMT!') + '&p[summary]=' + encodeURIComponent('From the producers of Jersey Shore comes Party Down South, an outrageous new series premiering Thursday, January 16 at 10/9c, only on CMT.') + '&p[url]=' + encodeURIComponent(window.location.href) + '&p[images][0]=' + encodeURIComponent($scope.ui.site.cdn + $scope.ui.memes[index].url);
-            var opts = 'status=1,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
-            
-            window.open(url, 'facebook', opts);
-            return false;
+            var isLoggedIn = fbLogin();
+
+            if (isLoggedIn) {
+                fbPost("#PartyDownSouth Jan 16 on CMT!", $scope.ui.memes[index].quote, "From the producers of Jersey Shore comes Party Down South, an outrageous new series premiering Thursday, January 16 at 10/9c, only on CMT.", $scope.ui.site.cdn + $scope.ui.memes[index].url);
+
+                alert('Thank you for sharing.');
+            }
         };
 
         $scope.shareTwitter = function (index) {
